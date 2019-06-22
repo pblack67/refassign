@@ -1,0 +1,21 @@
+{
+  "development": {
+    "username": "refassign",
+    "password": "project2",
+    "database": "refassign",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "refassign",
+    "password": "project2",
+    "database": "refassign",
+    "host": "localhost",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "production": {
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
+  }
+}
