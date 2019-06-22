@@ -1,24 +1,38 @@
-var db = require("../models");
+let db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Get all referees
-  app.get("/api/referees", function(req, res) {
-    db.Referee.findAll({}).then(function(dbReferee) {
+  app.get("/api/referees", (req, res) => {
+    db.Referee.findAll({}).then(dbReferee => {
       res.json(dbReferee);
     });
   });
 
-  // Create a new example
-  app.post("/api/referees", function(req, res) {
-    db.Referee.create(req.body).then(function(dbReferee) {
+  // Create a referee
+  app.post("/api/referees", (req, res) => {
+    console.log(req.body);
+    db.Referee.create(req.body).then(dbReferee => {
       res.json(dbReferee);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/referees/:id", function(req, res) {
-    db.Referee.destroy({ where: { id: req.params.id } }).then(function(dbReferee) {
+  // Delete a referee
+  app.delete("/api/referees/:id", (req, res) => {
+    db.Referee.destroy({ where: { id: req.params.id } }).then(dbReferee => {
       res.json(dbReferee);
     });
   });
+
+  // Update a referee
+  app.put("/api/referees/:id", (req, res) => {
+    db.Referee.update(req.body,
+      {
+        where: {
+          id: req.params.id
+        }
+      }).then(dbReferee => {
+        res.json(dbReferee);
+      });
+  });
+
 };
