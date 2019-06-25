@@ -93,4 +93,29 @@ module.exports = function (app) {
       });
     });
   });
+
+  // Get all referees for a given game
+  app.get("/api/assignments/game/:id", (request, response) => {
+    db.Games.findOne({
+      where: { id: request.params.id }
+    }).then(game => {
+      game.getReferees().then(referees => {
+        response.json(referees);
+      });
+    });
+  });
+
+  // Asssign game to a referee
+  app.post("/api/assignments/game/:gameid/:refereeid", (request, response) => {
+    db.Games.findOne({
+      where: { id: request.params.gameid }
+    }).then(game => {
+      db.Referees.findOne({
+        where: { id: request.params.refereeid }
+      }).then(referee => {
+        game.addReferee([referee]);
+        response.json(true);
+      });
+    });
+  });
 };
