@@ -3,84 +3,86 @@ let db = require("../models");
 module.exports = function (app) {
   // Get all referees
   app.get("/api/referees", (req, res) => {
-    db.Referee.findAll({}).then(dbReferee => {
-      res.json(dbReferee);
+    db.Referees.findAll({}).then(dbReferees => {
+      res.json(dbReferees);
     });
   });
 
   // Create a referee
   app.post("/api/referees", (req, res) => {
     console.log(req.body);
-    db.Referee.create(req.body).then(dbReferee => {
-      res.json(dbReferee);
+    db.Referees.create(req.body).then(dbReferees => {
+      res.json(dbReferees);
     });
   });
 
   // Delete a referee
   app.delete("/api/referees/:id", (req, res) => {
-    db.Referee.destroy({ where: { id: req.params.id } }).then(dbReferee => {
-      res.json(dbReferee);
+    db.Referees.destroy({ where: { id: req.params.id } }).then(dbReferees => {
+      res.json(dbReferees);
     });
   });
 
   // Update a referee
   app.put("/api/referees/:id", (req, res) => {
-    db.Referee.update(req.body,
+    db.Referees.update(req.body,
       {
         where: {
           id: req.params.id
         }
-      }).then(dbReferee => {
-        res.json(dbReferee);
+      }).then(dbReferees => {
+        res.json(dbReferees);
       });
   });
 
 
   // Get all games
   app.get("/api/games", (req, res) => {
-    db.Game.findAll({}).then(dbGame => {
-      res.json(dbGame);
+    db.Games.findAll({}).then(dbGames => {
+      res.json(dbGames);
     });
   });
 
   // Create a game
   app.post("/api/games", (req, res) => {
     console.log(req.body);
-    db.Game.create(req.body).then(dbGame => {
-      res.json(dbGame);
+    db.Games.create(req.body).then(dbGames => {
+      res.json(dbGames);
     });
   });
 
   // Delete a game
   app.delete("/api/games/:id", (req, res) => {
-    db.Game.destroy({ where: { id: req.params.id } }).then(dbGame => {
-      res.json(dbGame);
+    db.Games.destroy({ where: { id: req.params.id } }).then(dbGames => {
+      res.json(dbGames);
     });
   });
 
   // Update a game
   app.put("/api/games/:id", (req, res) => {
-    db.Game.update(req.body,
+    db.Games.update(req.body,
       {
         where: {
           id: req.params.id
         }
-      }).then(dbGame => {
-        res.json(dbGame);
+      }).then(dbGames => {
+        res.json(dbGames);
       });
   });
 
   // Get all games
   app.get("/api/assignments/referee/:id", (req, res) => {
+    console.log(db.Referee);
     db.Referee.findAll({
-      include: [{
-        model: db.Game,
-        attributes: ['school', 'sport'],
-        through: {
-          attributes: []
-        }
-      }],
-      where: {id: req.params.id}
+      include: [
+        {
+          model: db.Games,
+          attributes: ["school", "sport"],
+          through: {
+            attributes: []
+          }
+        }],
+      where: { id: req.params.id }
     }).then(result => {
       console.log(result);
       res.json(result);

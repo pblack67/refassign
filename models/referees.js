@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var Referee = sequelize.define("Referee", {
+    var Referees = sequelize.define("Referees", {
         firstName: {
             type: DataTypes.STRING,
             allowNull: false
@@ -30,11 +30,11 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    Referee.associate = function (models) {
-        Referee.belongsToMany(models.Game, { through: 'assignments' }); 
+    Referees.associate = function (models) {
+        Referees.belongsToMany(models.Games, { through: "assignments" });
     };
 
-    return Referee;
+    return Referees;
 };
 
 // Sample distance query for Google Maps Disane Matrix API

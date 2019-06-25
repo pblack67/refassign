@@ -1,27 +1,26 @@
 module.exports = function (sequelize, DataTypes) {
-  var Game = sequelize.define("Game", {
-    school: {
+  var Games = sequelize.define("Games", {
+    schoolName: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    sport: {
+    sportName: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    dateTime: {
+    gameTime: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    numOfRef: {
+    numberOfReferees: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
   });
 
-  Game.associate = function (models) {
-    Game.belongsToMany(models.Referee, { through: 'assignments' });
+  Games.associate = function (models) {
+    Games.belongsToMany(models.Referees, { through: "assignments" });
   };
 
-  return Game;
+  return Games;
 };
-
