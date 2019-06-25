@@ -2,78 +2,76 @@ let db = require("../models");
 
 module.exports = function (app) {
   // Get all referees
-  app.get("/api/referees", (req, res) => {
+  app.get("/api/referees", (request, response) => {
     db.Referees.findAll({}).then(dbReferees => {
-      res.json(dbReferees);
+      response.json(dbReferees);
     });
   });
 
   // Create a referee
-  app.post("/api/referees", (req, res) => {
-    console.log(req.body);
-    db.Referees.create(req.body).then(dbReferees => {
-      res.json(dbReferees);
+  app.post("/api/referees", (request, response) => {
+    db.Referees.create(request.body).then(dbReferees => {
+      response.json(dbReferees);
     });
   });
 
   // Delete a referee
-  app.delete("/api/referees/:id", (req, res) => {
-    db.Referees.destroy({ where: { id: req.params.id } }).then(dbReferees => {
-      res.json(dbReferees);
+  app.delete("/api/referees/:id", (request, response) => {
+    db.Referees.destroy({ where: { id: request.params.id } }).then(dbReferees => {
+      response.json(dbReferees);
     });
   });
 
   // Update a referee
-  app.put("/api/referees/:id", (req, res) => {
-    db.Referees.update(req.body,
+  app.put("/api/referees/:id", (request, response) => {
+    db.Referees.update(request.body,
       {
         where: {
-          id: req.params.id
+          id: request.params.id
         }
       }).then(dbReferees => {
-        res.json(dbReferees);
+        response.json(dbReferees);
       });
   });
 
 
   // Get all games
-  app.get("/api/games", (req, res) => {
+  app.get("/api/games", (request, response) => {
     db.Games.findAll({}).then(dbGames => {
-      res.json(dbGames);
+      response.json(dbGames);
     });
   });
 
   // Create a game
-  app.post("/api/games", (req, res) => {
-    console.log(req.body);
-    db.Games.create(req.body).then(dbGames => {
-      res.json(dbGames);
+  app.post("/api/games", (request, response) => {
+    console.log(request.body);
+    db.Games.create(request.body).then(dbGames => {
+      response.json(dbGames);
     });
   });
 
   // Delete a game
-  app.delete("/api/games/:id", (req, res) => {
-    db.Games.destroy({ where: { id: req.params.id } }).then(dbGames => {
-      res.json(dbGames);
+  app.delete("/api/games/:id", (request, response) => {
+    db.Games.destroy({ where: { id: request.params.id } }).then(dbGames => {
+      response.json(dbGames);
     });
   });
 
   // Update a game
-  app.put("/api/games/:id", (req, res) => {
-    db.Games.update(req.body,
+  app.put("/api/games/:id", (request, response) => {
+    db.Games.update(request.body,
       {
         where: {
-          id: req.params.id
+          id: request.params.id
         }
       }).then(dbGames => {
-        res.json(dbGames);
+        response.json(dbGames);
       });
   });
 
   // Get all games
-  app.get("/api/assignments/referee/:id", (req, res) => {
-    console.log(db.Referee);
-    db.Referee.findAll({
+  app.get("/api/assignments/referee/:id", (request, response) => {
+    db.Referees.findAll({
       include: [
         {
           model: db.Games,
@@ -82,25 +80,24 @@ module.exports = function (app) {
             attributes: []
           }
         }],
-      where: { id: req.params.id }
+      where: { id: request.params.id }
     }).then(result => {
       console.log(result);
-      res.json(result);
+      response.json(result);
     })
-
-    // User.findAll({
-    //   include: [{
-    //     model: Project,
-    //       through: {
-    //         attributes: ['createdAt', 'startedAt', 'finishedAt']
-    //           where: {completed: true}
-    //       }
-    //    }] 
-    //  });
-    // const pugsWithFriends = await Pug.findAll({
-    //   include: [{model: Friend}]
-    // })
   });
 
+  // Asssign referee to a game
+  app.post("/api/assignments/referee/:refereeid/:gameid", (request, response) => {
+    db.Referees.findOne({
+      where: { id: request.params.refereeid }
+    }).then(referee => {
+      db.Games.findOne({
+        where: { id: request.params.gameid }
+      }).then(game => {
+        referee.setGames([game]);
+        response.json(true);
+      });
+    });
+  });
 };
-
