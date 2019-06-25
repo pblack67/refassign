@@ -69,22 +69,15 @@ module.exports = function (app) {
       });
   });
 
-  // Get all games
+  // Get all games for a given referee
   app.get("/api/assignments/referee/:id", (request, response) => {
-    db.Referees.findAll({
-      include: [
-        {
-          model: db.Games,
-          attributes: ["school", "sport"],
-          through: {
-            attributes: []
-          }
-        }],
+    db.Referees.findOne({
       where: { id: request.params.id }
-    }).then(result => {
-      console.log(result);
-      response.json(result);
-    })
+    }).then(referee => {
+      referee.getGames().then(games => {
+        response.json(games);
+      });
+    });
   });
 
   // Asssign referee to a game
