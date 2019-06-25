@@ -35,4 +35,38 @@ module.exports = function (app) {
       });
   });
 
+
+// Get all games
+app.get("/api/games", (req, res) => {
+  db.Game.findAll({}).then(dbGame => {
+    res.json(dbGame);
+  });
+});
+
+// Create a game
+app.post("/api/games", (req, res) => {
+  console.log(req.body);
+  db.Game.create(req.body).then(dbGame => {
+    res.json(dbGame);
+  });
+});
+
+// Delete a game
+app.delete("/api/games/:id", (req, res) => {
+  db.Game.destroy({ where: { id: req.params.id } }).then(dbGame => {
+    res.json(dbGame);
+  });
+});
+
+// Update a game
+app.put("/api/games/:id", (req, res) => {
+  db.Game.update(req.body,
+    {
+      where: {
+        id: req.params.id
+      }
+    }).then(dbGame => {
+      res.json(dbGame);
+    });
+});
 };

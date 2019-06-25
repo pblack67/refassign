@@ -3,3 +3,6 @@ INSERT INTO referees (firstName, lastName, address, city, state, zip, email, cre
 ("Brian", "Teng", "1060 W. Addison St.", "Chicago", "IL", "60613", "brian@teng.com", "2019-06-24 07:00:00", "2019-06-24 07:00:00"),
 ("Abdul", "Hashoory", "333 W. 35th St.", "Chicago", "IL", "60616", "abdul@hashoory.com", "2019-06-24 07:00:00", "2019-06-24 07:00:00"),
 ("Michael", "Konda", "1901 W. Madison St.", "Chicago", "IL", "60612", "michael@konda.com", "2019-06-24 07:00:00", "2019-06-24 07:00:00");
+
+INSERT INTO games (school, sport, dateTime, numOfRef, createdAt, updatedAt) VALUES 
+("a school", "football", "2019-06-24 07:00:00", "3","2019-06-24 07:00:00", "2019-06-24 07:00:00");

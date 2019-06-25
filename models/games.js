@@ -1,9 +1,21 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Game = sequelize.define("Game", {
-    school: DataTypes.STRING,
-    sport: DataTypes.STRING,
-    dateTime: DataTypes.DATETIME,
-    NumOfRef: DataTypes.INTEGER
+    school: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    sport: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    dateTime: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    numOfRef: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   });
 
   // Post.associate = function(models) {
@@ -15,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
   //     }
   //   });
   // };
-  
+
 
   return Game;
 };
