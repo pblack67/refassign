@@ -29,6 +29,11 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     });
+
+    Referee.associate = function (models) {
+        Referee.belongsToMany(models.Game, { through: 'assignments' }); 
+    };
+
     return Referee;
 };
 
