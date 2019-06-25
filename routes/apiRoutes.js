@@ -95,7 +95,7 @@ module.exports = function (app) {
       db.Games.findOne({
         where: { id: request.params.gameid }
       }).then(game => {
-        referee.setGames([game]);
+        referee.addGames([game]);
         response.json(true);
       });
     });
