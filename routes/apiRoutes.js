@@ -1,6 +1,6 @@
 let db = require("../models");
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Get all referees
   app.get("/api/referees", (request, response) => {
     db.Referees.findAll({}).then(dbReferees => {
@@ -17,23 +17,23 @@ module.exports = function (app) {
 
   // Delete a referee
   app.delete("/api/referees/:id", (request, response) => {
-    db.Referees.destroy({ where: { id: request.params.id } }).then(dbReferees => {
-      response.json(dbReferees);
-    });
+    db.Referees.destroy({ where: { id: request.params.id } }).then(
+      dbReferees => {
+        response.json(dbReferees);
+      }
+    );
   });
 
   // Update a referee
   app.put("/api/referees/:id", (request, response) => {
-    db.Referees.update(request.body,
-      {
-        where: {
-          id: request.params.id
-        }
-      }).then(dbReferees => {
-        response.json(dbReferees);
-      });
+    db.Referees.update(request.body, {
+      where: {
+        id: request.params.id
+      }
+    }).then(dbReferees => {
+      response.json(dbReferees);
+    });
   });
-
 
   // Get all games
   app.get("/api/games", (request, response) => {
@@ -59,14 +59,13 @@ module.exports = function (app) {
 
   // Update a game
   app.put("/api/games/:id", (request, response) => {
-    db.Games.update(request.body,
-      {
-        where: {
-          id: request.params.id
-        }
-      }).then(dbGames => {
-        response.json(dbGames);
-      });
+    db.Games.update(request.body, {
+      where: {
+        id: request.params.id
+      }
+    }).then(dbGames => {
+      response.json(dbGames);
+    });
   });
 
   // Get all games for a given referee
@@ -81,18 +80,21 @@ module.exports = function (app) {
   });
 
   // Asssign referee to a game
-  app.post("/api/assignments/referee/:refereeid/:gameid", (request, response) => {
-    db.Referees.findOne({
-      where: { id: request.params.refereeid }
-    }).then(referee => {
-      db.Games.findOne({
-        where: { id: request.params.gameid }
-      }).then(game => {
-        referee.addGames([game]);
-        response.json(true);
+  app.post(
+    "/api/assignments/referee/:refereeid/:gameid",
+    (request, response) => {
+      db.Referees.findOne({
+        where: { id: request.params.refereeid }
+      }).then(referee => {
+        db.Games.findOne({
+          where: { id: request.params.gameid }
+        }).then(game => {
+          referee.addGames([game]);
+          response.json(true);
+        });
       });
-    });
-  });
+    }
+  );
 
   // Get all referees for a given game
   app.get("/api/assignments/game/:id", (request, response) => {

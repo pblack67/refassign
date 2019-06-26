@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   var Games = sequelize.define("Games", {
     schoolName: {
       type: DataTypes.STRING,
@@ -18,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  Games.associate = function (models) {
+  Games.associate = models => {
     Games.belongsToMany(models.Referees, { through: "assignments" });
   };
 
