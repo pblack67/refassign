@@ -1,6 +1,7 @@
+require("dotenv").config();
 const db = require("../models");
 const nodemailer = require("nodemailer");
-require("dotenv").config();
+const api = require("./api");
 
 async function sendMail(emailAddress) {
   if (process.env.EMAIL_USER) {
@@ -29,7 +30,7 @@ async function sendMail(emailAddress) {
 module.exports = function(app) {
   // Get all referees
   app.get("/api/referees", (request, response) => {
-    db.Referees.findAll({}).then(dbReferees => {
+    api.getAllReferees(dbReferees => {
       response.json(dbReferees);
     });
   });
@@ -63,7 +64,7 @@ module.exports = function(app) {
 
   // Get all games
   app.get("/api/games", (request, response) => {
-    db.Games.findAll({}).then(dbGames => {
+    api.getAllGames(dbGames => {
       response.json(dbGames);
     });
   });

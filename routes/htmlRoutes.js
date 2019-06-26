@@ -1,4 +1,4 @@
-var db = require("../models");
+const api = require("./api");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
@@ -6,11 +6,15 @@ module.exports = function(app) {
   });
 
   app.get("/game", function(req, res) {
-    res.render("game");
+    api.getAllReferees(games => {
+      res.render("game", games);
+    });
   });
 
   app.get("/referee", function(req, res) {
-    res.render("referee");
+    api.getAllReferees(referees => {
+      res.render("referee", referees);
+    });
   });
 
   app.get("/login", function(req, res) {
