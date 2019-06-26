@@ -1,4 +1,30 @@
-let db = require("../models");
+const db = require("../models");
+const nodemailer = require("nodemailer");
+require("dotenv").config();
+
+async function sendMail(emailAddress) {
+  if (process.env.EMAIL_USER) {
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD
+      }
+    });
+
+    let info = await transporter.sendMail({
+      from: '"Referee Assigner" <refassign312@gmail.com',
+      to: emailAddress,
+      subject: "Game Assignment",
+      text: "Hello world?",
+      html: "<b>Hello world?</b>"
+    });
+
+    console.log("Message sent: %s", info.messageId);
+  }
+}
 
 module.exports = function(app) {
   // Get all referees
@@ -119,5 +145,11 @@ module.exports = function(app) {
         response.json(true);
       });
     });
+  });
+
+  // This is for testing, nothing else. Front-end shouldn't call this...
+  app.get("/api/sendmail", (request, response) => {
+    sendMail("pblack67@comcast.net");
+    response.end();
   });
 };
