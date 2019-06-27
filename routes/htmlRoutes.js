@@ -1,39 +1,32 @@
-var db = require("../models");
+const api = require("./api");
 
 module.exports = function(app) {
-  // Load index page
-  app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
-  });
+ app.get("/", function(req, res) {
+   res.render("index");
+ });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
-  });
-  app.get('/game', function(req, res){
-    res.render('game');
-  });
-  app.get('/referee', function(req, res){
-    res.render('referee');
-  });
-  app.get('/login', function(req, res){
-    res.render('login');
-  });
-  app.get('/contact', function(req, res){
-    res.render('contact');
-  });
+ app.get("/game", function(req, res) {
+   api.getAllReferees(games => {
+     res.render("game", games);
+   });
+ });
 
-  // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.render("404");
-  });
+ app.get("/referee", function(req, res) {
+   api.getAllReferees(referees => {
+     res.render("referee", referees);
+   });
+ });
+
+ app.get("/login", function(req, res) {
+   res.render("login");
+ });
+
+ app.get("/contact", function(req, res) {
+   res.render("contact");
+ });
+
+ // Render 404 page for any unmatched routes
+ app.get("*", function(req, res) {
+   res.render("404");
+ });
 };

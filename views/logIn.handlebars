@@ -3,7 +3,7 @@
         border-radius: 20px;
         border: 1px solid whitesmoke;
         background-color: transparent;
-        color: #FFFFFF;
+        color: red;
         font-size: 12px;
         font-weight: bold;
         padding: 12px 45px;
@@ -49,7 +49,7 @@
     }
 
     #container1 {
-        background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), url("../public/img/referee.jpg") center no-repeat;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
 
         border-radius: 10px;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
@@ -187,17 +187,17 @@
         width: 40px;
     }
 </style>
-<div class="container" id="container1">
+<div class="container " id="container1">
     <div class="form-container sign-up-container">
         <form action="#">
             <h1>Create Account</h1>
             <input type="text" id="firstname-input" placeholder="Name" />
-            <div class="alert-danger text-center" id="needFirstName">Please enter your name!</div>
+            <div class="alert-danger text-center" id="needFirstName"></div>
             <input type="email" id="email-input" placeholder="Email" />
-            <div class="alert-danger text-center" id="needEmail">Please enter a valid Email!</div>
-            <div class="alert-danger text-center" id="emailExists">This Email Already Exists!</div>
+            <div class="alert-danger text-center" id="needEmail"></div>
+            <div class="alert-danger text-center" id="emailExists"></div>
             <input type="password" id="password-input" placeholder="Password" />
-            <div class="alert-danger text-center" id="needPassword">Please enter a password!</div>
+            <div class="alert-danger text-center" id="needPassword"></div>
             <button id="submit">Sign Up</button>
         </form>
     </div>
@@ -210,7 +210,7 @@
         </form>
     </div>
     <div class="overlay-container">
-        <div class="overlay2">
+        <div class="overlay2" >
             <div class="overlay-panel overlay-left">
                 <h1>Welcome Back!</h1>
                 <p>To keep connected with us please login with your personal info</p>
