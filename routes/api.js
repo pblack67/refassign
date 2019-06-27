@@ -19,19 +19,20 @@ async function getAllAvailableReferees(gameid, callback) {
   let gameToAssign = await db.Games.findOne({
     where: { id: gameid }
   });
-//   console.log(gameToAssign.gameTime);
-//   let justDate = new String(gameToAssign.gameTime).split("T")[0];
-//   console.log(justDate);
-//   let gameMoment = moment(justDate);
-//   console.log(gameMoment);
+
+  console.log(gameToAssign.gameTime);
+  let gameMomentString = moment(gameToAssign.gameTime).format("YYYYMMDD");
+
   for (let i = 0; i < dbReferees.length; i++) {
     let referee = dbReferees[i];
     let dbGames = await referee.getGames();
     let available = true;
     for (let j = 0; j < dbGames.length; j++) {
-      //   console.log(dbGames[j].schoolName);
-      // Compare referee games with potential assignment
-      // If the referee is "busy" then don't add him to the available list
+        let assignedMomentString = moment(dbGames[j].gameTime).format("YYYYMMDD");
+        console.log(gameMomentString, assignedMomentString);
+        if (gameMomentString == assignedMomentString) {
+            available = false;
+        }
     }
     if (available) {
       availableReferees.push(referee);
