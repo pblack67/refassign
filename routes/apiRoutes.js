@@ -1,36 +1,9 @@
-require("dotenv").config();
-const db = require("../models");
-const nodemailer = require("nodemailer");
-const api = require("./api");
-
-async function sendMail(emailAddress) {
-  if (process.env.EMAIL_USER) {
-    let transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false, // true for 465, false for other ports
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD
-      }
-    });
-
-    let info = await transporter.sendMail({
-      from: '"Referee Assigner" <refassign312@gmail.com',
-      to: emailAddress,
-      subject: "Game Assignment",
-      text: "Hello world?",
-      html: "<b>Hello world?</b>"
-    });
-
-    console.log("Message sent: %s", info.messageId);
-  }
-}
+let db = require("../models");
 
 module.exports = function(app) {
   // Get all referees
   app.get("/api/referees", (request, response) => {
-    api.getAllReferees(dbReferees => {
+    db.Referees.findAll({}).then(dbReferees => {
       response.json(dbReferees);
     });
   });
@@ -64,7 +37,7 @@ module.exports = function(app) {
 
   // Get all games
   app.get("/api/games", (request, response) => {
-    api.getAllGames(dbGames => {
+    db.Games.findAll({}).then(dbGames => {
       response.json(dbGames);
     });
   });
@@ -146,11 +119,5 @@ module.exports = function(app) {
         response.json(true);
       });
     });
-  });
-
-  // This is for testing, nothing else. Front-end shouldn't call this...
-  app.get("/api/sendmail", (request, response) => {
-    sendMail("pblack67@comcast.net");
-    response.end();
   });
 };
