@@ -1,17 +1,22 @@
 <style>
-#showcase h1{
-  font-size:50px;
-  line-height:1.2;
-}
+  #showcase h1 {
+    font-size: 50px;
+    line-height: 1.2;
+  }
 
-#showcase p{
-  font-size:20px;
-}
+  #showcase p,
+  li {
+    font-size: 20px;
+  }
 
-}
+  }
 </style>
-<header id="showcase">
-    <h1>Referee</h1>
-    <p>pending</p>
-    
- 
+
+<div id="showcase">
+  <h1>Referee</h1>
+  <ul>
+    {{#each referees}}
+    <li>{{firstName}} {{lastName}}</li>
+    {{/each}}
+  </ul>
+</div>

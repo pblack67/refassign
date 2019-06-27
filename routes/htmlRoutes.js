@@ -1,38 +1,30 @@
-var db = require("../models");
+var api = require("../routes/api");
 
 module.exports = function(app) {
-  // Load index page
+  app.get("/game", function(req, res) {
+    api.getAllGames(games => {
+      res.render("game", { games });
+    });
+  });
+
+  app.get("/referee", function(req, res) {
+    api.getAllReferees(referees => {
+      res.render("referee", { referees });
+    });
+  });
+
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
+    res.render("login");
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
-  });
-  app.get('/game', function(req, res){
-    res.render('game');
-  });
-  app.get('/referee', function(req, res){
-    res.render('referee');
-  });
-  app.get('/login', function(req, res){
-    res.render('login');
-  });
-  app.get('/contact', function(req, res){
-    res.render('contact');
+  app.get("/login", function(req, res) {
+    res.render("login");
   });
 
-  // Render 404 page for any unmatched routes
+  app.get("/contact", function(req, res) {
+    res.render("contact");
+  });
+
   app.get("*", function(req, res) {
     res.render("404");
   });

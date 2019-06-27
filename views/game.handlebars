@@ -1,16 +1,22 @@
 <style>
-#showcase h1{
-  font-size:50px;
-  line-height:1.2;
-}
+  #showcase h1 {
+    font-size: 50px;
+    line-height: 1.2;
+  }
 
-#showcase p{
-  font-size:20px;
-}
+  #showcase p,
+  li {
+    font-size: 20px;
+  }
 
-}
+  }
 </style>
-<header id="showcase">
-    <h1>Games</h1>
-    <p>pending</p>
- 
+
+<div id="showcase">
+  <h1>Games</h1>
+  <ul>
+    {{#each games}}
+    <li>{{schoolName}} {{sportName}} {{gameTime}} {{numberOfReferees}}</li>
+    {{/each}}
+  </ul>
+</div>
