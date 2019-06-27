@@ -1,9 +1,10 @@
-let db = require("../models");
+const db = require("../models");
+const api = require("./api");
 
 module.exports = function(app) {
   // Get all referees
   app.get("/api/referees", (request, response) => {
-    db.Referees.findAll({}).then(dbReferees => {
+    api.getAllReferees(dbReferees => {
       response.json(dbReferees);
     });
   });
@@ -37,7 +38,7 @@ module.exports = function(app) {
 
   // Get all games
   app.get("/api/games", (request, response) => {
-    db.Games.findAll({}).then(dbGames => {
+    api.getAllGames(dbGames => {
       response.json(dbGames);
     });
   });
@@ -118,6 +119,12 @@ module.exports = function(app) {
         game.addReferee([referee]);
         response.json(true);
       });
+    });
+  });
+
+  app.get("/api/availability/:gameid", (request, response) => {
+    api.getAllAvailableReferees(request.params.gameid, results => {
+      response.json(results);
     });
   });
 };
