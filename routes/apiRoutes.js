@@ -122,9 +122,13 @@ module.exports = function(app) {
     db.Referees.findOne({
       where: { id: request.params.id }
     }).then(referee => {
-      referee.getGames().then(games => {
-        response.json(games);
-      });
+      if (referee) {
+        referee.getGames().then(games => {
+          response.json(games);
+        });
+      } else {
+        response.json(false);
+      }
     });
   });
 
@@ -135,13 +139,21 @@ module.exports = function(app) {
       db.Referees.findOne({
         where: { id: request.params.refereeid }
       }).then(referee => {
-        db.Games.findOne({
-          where: { id: request.params.gameid }
-        }).then(game => {
-          referee.addGames([game]);
-          sendAssignmentMail(referee, game);
-          response.json(true);
-        });
+        if (referee) {
+          db.Games.findOne({
+            where: { id: request.params.gameid }
+          }).then(game => {
+            if (game) {
+              referee.addGames([game]);
+              sendAssignmentMail(referee, game);
+              response.json(true);
+            } else {
+              response.json(false);
+            }
+          });
+        } else {
+          response.json(false);
+        }
       });
     }
   );
@@ -151,9 +163,13 @@ module.exports = function(app) {
     db.Games.findOne({
       where: { id: request.params.id }
     }).then(game => {
-      game.getReferees().then(referees => {
-        response.json(referees);
-      });
+      if (game) {
+        game.getReferees().then(referees => {
+          response.json(referees);
+        });
+      } else {
+        response.json(false);
+      }
     });
   });
 
@@ -162,12 +178,20 @@ module.exports = function(app) {
     db.Games.findOne({
       where: { id: request.params.gameid }
     }).then(game => {
-      db.Referees.findOne({
-        where: { id: request.params.refereeid }
-      }).then(referee => {
-        game.addReferee([referee]);
-        response.json(true);
-      });
+      if (game) {
+        db.Referees.findOne({
+          where: { id: request.params.refereeid }
+        }).then(referee => {
+          if (referee) {
+            game.addReferee([referee]);
+            response.json(true);
+          } else {
+            response.json(false);
+          }
+        });
+      } else {
+        response.json(false);
+      }
     });
   });
   // get available refs for a game
