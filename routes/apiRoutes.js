@@ -121,9 +121,17 @@ module.exports = function(app) {
       });
     });
   });
-
+// get available refs for a game
   app.get("/api/availability/:gameid", (request, response) => {
     api.getAllAvailableReferees(request.params.gameid, results => {
+      response.json(results);
+    });
+  });
+
+
+  // get available games for a ref
+  app.get("/api/gamability/:refereeid", (request, response) => {
+    api.getAllAvailableGames(request.params.refereeid, results => {
       response.json(results);
     });
   });
