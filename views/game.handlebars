@@ -1,16 +1,111 @@
 <style>
-#showcase h1{
-  font-size:50px;
-  line-height:1.2;
-}
+  .container1 {
+    width: 100%;
+  }
+  .leftDiv {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+    transform: translateX(-100rem);
+    animation: slideIn .5s forwards;
+    width: 40%;
+    height: 500px;
+    margin: 20px 20px 20px 80px;
+    float: left;
+  }
 
-#showcase p{
-  font-size:20px;
-}
+  .rightDiv {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+    transform: translateX(100rem);
+    animation: slideIn .5s forwards;
+    width: 40%;
+    height: 500px;
+    margin: 20px 80px 20px 20px;
+    float: right
+  }
 
-}
+  h2 {
+    color: white;
+    text-align: center;
+    border-bottom: 2px solid red;
+    padding: 20px 0;
+  }
+
+  label {
+    color: white;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  #create {
+    color: white;
+    font-size: 15px;
+  }
+
+  #create:hover {
+    color: white;
+    font-size: 20px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+
+  }
 </style>
-<header id="showcase">
-    <h1>Games</h1>
-    <p>pending</p>
- 
+<div class="container1">
+
+  <div class="leftDiv">
+    <h2>Games</h2>
+    <hr>
+  </div>
+  <div class="rightDiv">
+    <h2>Registration</h2>
+    <hr>
+    <h3>Please register new game!</h3>
+    <div class="col-sm-12 col-md-6 col-lg-12">
+      <div class="form-group">
+        <label for="dayofweek">School:</label>
+        <select class="form-control" id="dateDay-input">
+          <option>Loyola Academy (Wilmette)</option>
+          <option>Brother Rice (Chicago)</option>
+          <option>Marist (Chicago)</option>
+          <option>Chicago Mt. Carmel (Chicago)</option>
+          <option>Simeon (Chicago)</option>
+          <option>Nazareth Academy (LaGrange Park)</option>
+          <option>	Lincoln-Way East (Frankfort)</option>
+        </select>
+
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-12">
+      <div class="form-group">
+        <label for="dayofweek">Sport:</label>
+        <select class="form-control" id="dateDay-input">
+          <option>Soccer</option>
+          <option>Football</option>
+        </select>
+
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-12">
+      <div class="form-group">
+        <label for="date">Date:<span class="kv-reqd"></label>
+        <input type="date" class="form-control" id="date-input" name="date" required>
+        <div class="alert-danger text-center" id="date"></div>
+      </div>
+
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-12">
+      <div class="form-group">
+        <label for="number">Number of Referees:<span class="kv-reqd"></label>
+        <input type="number" class="form-control" id="number-input" name="number" required>
+        <div class="alert-danger text-center" id="number"></div>
+      </div>
+
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-6">
+
+      <div class="form-group">
+        <hr>
+        <div class="text-center">
+          <button type="button" id="create" class="btn btn-outline-danger btn-block">Create</button>
+
+        </div>
+      </div>
+    </div>
