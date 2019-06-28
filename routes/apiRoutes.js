@@ -26,7 +26,7 @@ async function sendAssignmentMail(referee, game) {
   
   The Referee Assignor`;
 
-  let assignmentHTML = `Congratulations ${referee.firstName}!<br>
+    let assignmentHTML = `Congratulations ${referee.firstName}!<br>
   <br>  
   You've been assigned a new ${game.sportName} game.<br>
   <br>
