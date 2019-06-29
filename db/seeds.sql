@@ -6,4 +6,5 @@ INSERT INTO referees (firstName, lastName, address, city, state, zip, email, cre
 
 INSERT INTO games (schoolName, sportName, gameTime, numberOfReferees, createdAt, updatedAt) VALUES
 ("John Hersey High School", "Football", "2019-06-24 07:00:00", "5", "2019-06-24 07:00:00", "2019-06-24 07:00:00"),
-("William Fremd High School", "Soccer", "2019-06-24 07:00:00", "5", "2019-06-24 07:00:00", "2019-06-24 07:00:00")
+("William Fremd High School", "Soccer", "2019-06-24 07:00:00", "5", "2019-06-24 07:00:00", "2019-06-24 07:00:00"),
+("Different Date High School", "Football", "2019-06-27 07:00:00", "5", "2019-06-24 07:00:00", "2019-06-24 07:00:00")

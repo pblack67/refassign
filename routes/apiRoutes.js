@@ -1,9 +1,58 @@
-let db = require("../models");
+const db = require("../models");
+const api = require("./api");
+const nodemailer = require("nodemailer");
+require("dotenv").config();
+
+async function sendAssignmentMail(referee, game) {
+  if (process.env.EMAIL_USER) {
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD
+      }
+    });
+
+    let assignmentText = `Congratulations ${referee.firstName}! 
+    
+  You've been assigned a new ${game.sportName} game.
+  
+  Time: ${game.gameTime}
+  Place: ${game.schoolName}
+  
+  Good luck! And may the calls be with you.
+  
+  The Referee Assignor`;
+
+    let assignmentHTML = `Congratulations ${referee.firstName}!<br>
+  <br>  
+  You've been assigned a new ${game.sportName} game.<br>
+  <br>
+  Time: ${game.gameTime}<br>
+  Place: ${game.schoolName}<br>
+  <br>
+  Good luck! And may the calls be with you.<br>
+  <br>
+  The Referee Assignor`;
+
+    let info = await transporter.sendMail({
+      from: '"Referee Assigner" <refassign312@gmail.com',
+      to: referee.email,
+      subject: "Game Assignment",
+      text: assignmentText,
+      html: assignmentHTML
+    });
+
+    console.log("Message sent: %s", info.messageId);
+  }
+}
 
 module.exports = function(app) {
   // Get all referees
   app.get("/api/referees", (request, response) => {
-    db.Referees.findAll({}).then(dbReferees => {
+    api.getAllReferees(dbReferees => {
       response.json(dbReferees);
     });
   });
@@ -37,7 +86,7 @@ module.exports = function(app) {
 
   // Get all games
   app.get("/api/games", (request, response) => {
-    db.Games.findAll({}).then(dbGames => {
+    api.getAllGames(dbGames => {
       response.json(dbGames);
     });
   });
@@ -73,9 +122,13 @@ module.exports = function(app) {
     db.Referees.findOne({
       where: { id: request.params.id }
     }).then(referee => {
-      referee.getGames().then(games => {
-        response.json(games);
-      });
+      if (referee) {
+        referee.getGames().then(games => {
+          response.json(games);
+        });
+      } else {
+        response.json(false);
+      }
     });
   });
 
@@ -86,12 +139,21 @@ module.exports = function(app) {
       db.Referees.findOne({
         where: { id: request.params.refereeid }
       }).then(referee => {
-        db.Games.findOne({
-          where: { id: request.params.gameid }
-        }).then(game => {
-          referee.addGames([game]);
-          response.json(true);
-        });
+        if (referee) {
+          db.Games.findOne({
+            where: { id: request.params.gameid }
+          }).then(game => {
+            if (game) {
+              referee.addGames([game]);
+              sendAssignmentMail(referee, game);
+              response.json(true);
+            } else {
+              response.json(false);
+            }
+          });
+        } else {
+          response.json(false);
+        }
       });
     }
   );
@@ -101,9 +163,13 @@ module.exports = function(app) {
     db.Games.findOne({
       where: { id: request.params.id }
     }).then(game => {
-      game.getReferees().then(referees => {
-        response.json(referees);
-      });
+      if (game) {
+        game.getReferees().then(referees => {
+          response.json(referees);
+        });
+      } else {
+        response.json(false);
+      }
     });
   });
 
@@ -112,12 +178,33 @@ module.exports = function(app) {
     db.Games.findOne({
       where: { id: request.params.gameid }
     }).then(game => {
-      db.Referees.findOne({
-        where: { id: request.params.refereeid }
-      }).then(referee => {
-        game.addReferee([referee]);
-        response.json(true);
-      });
+      if (game) {
+        db.Referees.findOne({
+          where: { id: request.params.refereeid }
+        }).then(referee => {
+          if (referee) {
+            game.addReferee([referee]);
+            response.json(true);
+          } else {
+            response.json(false);
+          }
+        });
+      } else {
+        response.json(false);
+      }
+    });
+  });
+  // get available refs for a game
+  app.get("/api/availability/:gameid", (request, response) => {
+    api.getAllAvailableReferees(request.params.gameid, results => {
+      response.json(results);
+    });
+  });
+
+  // get available games for a ref
+  app.get("/api/gamability/:refereeid", (request, response) => {
+    api.getAllAvailableGames(request.params.refereeid, results => {
+      response.json(results);
     });
   });
 };

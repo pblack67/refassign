@@ -1,41 +1,60 @@
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-
-<section id="showcase">
-    <div class="container">
-        <img src="../public/img/referee.jpg" alt="">
+<style>
+.container1 {
+    width: 100%;
+    margin: 0%
+  }
+  .leftDiv {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+    transform: translateX(-100rem);
+    animation: slideIn .5s forwards;
+    width: 25%;
+    height: 500px;
+    margin: 20px 20px 20px 80px;
+    float: left;
+  }
+  
+   .middleDiv {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+    transform: translateY(100rem);
+    animation: slideIn .7s forwards;
+    width: 35%;
+    height: 500px;
+    margin: 20px 0 20px 0;
+    float: left;
+  }
+  .rightDiv {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+    transform: translateX(100rem);
+    animation: slideIn .5s forwards;
+    width: 25%;
+    height: 500px;
+    margin: 20px 80px 20px 20px;
+    float: left;
+  }
+  h2 {
+    color: white;
+    text-align: center;
+    border-bottom: 2px solid red;
+    padding: 20px 0;
+  }
+</style>
+<div class="container">
         <h1>Welcome</h1>
         <p>Calling all referees, umpires and judges! Don't let old technology hold you back by looking no
             further than Whistle for your newest complete assigning solution.</p>
-</section>
-
 </div>
-<script>
-    var open = document.getElementById('hamburger');
-    var changeIcon = true;
+<div class="container1">
 
-    open.addEventListener("click", function () {
-
-        var overlay = document.querySelector('.overlay');
-        var nav = document.querySelector('nav');
-        var icon = document.querySelector('.menu-toggle i');
-
-        overlay.classList.toggle("menu-open");
-        nav.classList.toggle("menu-open");
-
-        if (changeIcon) {
-            icon.classList.remove("fa-bars");
-            icon.classList.add("fa-times");
-
-            changeIcon = false;
-        }
-        else {
-            icon.classList.remove("fa-times");
-            icon.classList.add("fa-bars");
-            changeIcon = true;
-        }
-    });
-
-</script>
+  <div class="leftDiv">
+    <h2>Referees!</h2>
+    <hr>
+  </div>
+  <div class="middleDiv">
+    <h2>Assignment!</h2>
+    <hr>
+  </div>
+  <div class="rightDiv">
+    <h2>Games!</h2>
+    <hr>
+  </div>
+</div>
