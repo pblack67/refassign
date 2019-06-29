@@ -209,13 +209,9 @@ module.exports = function(app) {
   });
 
   // Get all games with spots remaining
-app.get("/api/assignments/availableGames", (request, response) => {
-  api.getGamesWithOpenings(dbGames => {
-    response.json(dbGames);
+  app.get("/api/assignments/availableGames", (request, response) => {
+    api.getGamesWithOpenings(dbGames => {
+      response.json(dbGames);
+    });
   });
-});
-
 }; // module closing bracket
-
-
-
