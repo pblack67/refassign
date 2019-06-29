@@ -6,8 +6,8 @@ module.exports = function(app) {
   });
 
   app.get("/game", function(req, res) {
-    api.getAllReferees(games => {
-      res.render("game", games);
+    api.getAllGames(games => {
+      res.render("game", { games });
     });
   });
 

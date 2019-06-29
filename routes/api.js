@@ -91,6 +91,7 @@ async function getGamesWithOpenings(callback) {
     console.log('# of ref', numOfRefInGames, 'max # of ref', dbGames[i].dataValues.numberOfReferees);
     console.log(availGamesArray[i].dataValues);
   };
+// eslint-disable-next-line prettier/prettier
 };
 
 

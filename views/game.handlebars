@@ -52,6 +52,11 @@
   <div class="leftDiv">
     <h2>Games</h2>
     <hr>
+    <ul>
+    {{#each games}}
+    <li>{{firstName}} {{lastName}}</li>
+    {{/each}}
+    </ul>
   </div>
   <div class="rightDiv">
     <h2>Registration</h2>
@@ -60,7 +65,7 @@
     <div class="col-sm-12 col-md-6 col-lg-12">
       <div class="form-group">
         <label for="dayofweek">School:</label>
-        <select class="form-control" id="dateDay-input">
+        <select class="form-control" id="schoolName-input">
           <option>Loyola Academy (Wilmette)</option>
           <option>Brother Rice (Chicago)</option>
           <option>Marist (Chicago)</option>
@@ -75,7 +80,7 @@
     <div class="col-sm-12 col-md-6 col-lg-12">
       <div class="form-group">
         <label for="dayofweek">Sport:</label>
-        <select class="form-control" id="dateDay-input">
+        <select class="form-control" id="sportsName-input">
           <option>Soccer</option>
           <option>Football</option>
         </select>
@@ -85,7 +90,7 @@
     <div class="col-sm-12 col-md-6 col-lg-12">
       <div class="form-group">
         <label for="date">Date:<span class="kv-reqd"></label>
-        <input type="date" class="form-control" id="date-input" name="date" required>
+        <input type="date" class="form-control" id="gameTime-input" name="date" required>
         <div class="alert-danger text-center" id="date"></div>
       </div>
 
@@ -93,7 +98,7 @@
     <div class="col-sm-12 col-md-6 col-lg-12">
       <div class="form-group">
         <label for="number">Number of Referees:<span class="kv-reqd"></label>
-        <input type="number" class="form-control" id="number-input" name="number" required>
+        <input type="number" class="form-control" id="numberOfReferees-input" name="number" required>
         <div class="alert-danger text-center" id="number"></div>
       </div>
 
@@ -109,3 +114,4 @@
         </div>
       </div>
     </div>
+<script src="/js/game.js"></script>
