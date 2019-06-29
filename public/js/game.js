@@ -2,7 +2,7 @@ $(function() {
   $(document).on("click", "#create", function(event) {
     event.preventDefault();
     let newGame = {
-      schoolName: $("schoolName-input").val(),
+      schoolName: $("#schoolName-input").val(),
       sportName: $("#sportName-input").val(),
       gameTime: $("#gameTime-input").val(),
       numberOfReferees: $("#numberOfReferees-input").val()
