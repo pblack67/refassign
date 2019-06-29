@@ -25,6 +25,12 @@ module.exports = function(app) {
     res.render("contact");
   });
 
+  app.get("/assign", function(req, res) {
+    api.getGamesWithOpenings(games => {
+      res.render("assign", { games });
+    });
+  });
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
