@@ -77,9 +77,27 @@ async function getAllAvailableGames(refereeid, callback) {
   callback(availableGames);
 }
 
+// Get all games with referee openings
+async function getGamesWithOpenings(callback) {
+  let availGamesArray = [];
+  let dbGames = await db.Games.findAll({});
+  for (let i = 0; i < dbGames.length; i++) {
+    let game = dbGames[i];
+    let refInGames = await game.getReferees();
+    let numOfRefInGames = refInGames.length;
+    if (numOfRefInGames < dbGames[i].dataValues.numberOfReferees) {
+      availGamesArray.push(game);
+    };
+    console.log('# of ref', numOfRefInGames, 'max # of ref', dbGames[i].dataValues.numberOfReferees);
+    console.log(availGamesArray[i].dataValues);
+  };
+};
+
+
 module.exports = {
   getAllReferees,
   getAllGames,
   getAllAvailableReferees,
-  getAllAvailableGames
+  getAllAvailableGames,
+  getGamesWithOpenings
 };
