@@ -13,7 +13,7 @@ module.exports = function(app) {
 
   app.get("/referee", function(req, res) {
     api.getAllReferees(referees => {
-      res.render("referee", referees);
+      res.render("referee", { referees });
     });
   });
 
