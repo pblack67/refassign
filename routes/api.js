@@ -96,6 +96,7 @@ async function getGamesWithOpenings(callback) {
     );
     console.log(availGamesArray[i].dataValues);
   }
+  callback(availGamesArray);
 }
 
 async function getGameById(id, callback) {

@@ -1,25 +1,11 @@
-
 $(function() {
-  $(document).on("click", "#SOME_ID_OF_CARD", function(event) { // need some id of the thing being clicked
+  $(document).on("click", ".js-assign", function(event) {
     event.preventDefault();
-    gameCardIdNumber = this  // change to see if its the right code number .dataValues?
-    console.log(gameCardIdNumber)
-    let chosenGame = {
-      schoolName: $("#schoolName-input").val(),
-      sportName: $("#sportName-input").val(),
-      gameTime: $("#gameTime-input").val(),
-      numberOfReferees: $("#numberOfReferees-input").val()
-    };
-    console.log(newGame);
-    $.post("/api/games", newGame, function(data, status) {
-      console.log(data);
-      console.log(status);
-      location.reload();
-    });
+    let gameid = $(this).attr("game-id");
+    console.log(gameid);
+    location.href = (`/api/assign/`+ gameid);
   });
 });
-
-
 
 
 // create an assign page with cards of each available game or a dropdown list
