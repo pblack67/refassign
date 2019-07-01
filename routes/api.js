@@ -94,7 +94,6 @@ async function getGamesWithOpenings(callback) {
       "max # of ref",
       dbGames[i].dataValues.numberOfReferees
     );
-    console.log(availGamesArray[i].dataValues);
   }
   callback(availGamesArray);
 }
