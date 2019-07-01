@@ -132,7 +132,7 @@ module.exports = function(app) {
     });
   });
 
-  // Asssign referee to a game
+  // Assign referee to a game
   app.post(
     "/api/assignments/referee/:refereeid/:gameid",
     (request, response) => {
@@ -146,6 +146,31 @@ module.exports = function(app) {
             if (game) {
               referee.addGames([game]);
               sendAssignmentMail(referee, game);
+              response.json(true);
+            } else {
+              response.json(false);
+            }
+          });
+        } else {
+          response.json(false);
+        }
+      });
+    }
+  );
+
+  // Unassign a referee from a game
+  app.delete(
+    "/api/assignments/referee/:refereeid/:gameid",
+    (request, response) => {
+      db.Referees.findOne({
+        where: { id: request.params.refereeid }
+      }).then(referee => {
+        if (referee) {
+          db.Games.findOne({
+            where: { id: request.params.gameid }
+          }).then(game => {
+            if (game) {
+              referee.removeGame([game]);
               response.json(true);
             } else {
               response.json(false);

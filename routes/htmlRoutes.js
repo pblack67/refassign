@@ -31,6 +31,16 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/assign/:gameid", function(req, res) {
+    api.getGameById(req.params.gameid, function(game) {
+      game.getReferees().then(assigned => {
+        api.getAllAvailableReferees(game.id, function(available) {
+          res.render("assigngame", { game, assigned, available });
+        });
+      });
+    });
+  });
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
