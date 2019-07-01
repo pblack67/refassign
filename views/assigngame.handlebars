@@ -1,46 +1,46 @@
-<h1>Game to Assign</h1>
 <div class="container">
     <div class="row">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Game</h5>
-                <p class="card-text">{{game.schoolName}}</p>
-                <p class="card-text">{{game.sportName}}</p>
-                <p class="card-text">{{game.gameTime}}</p>
-                <p class="card-text">{{game.numberOfReferees}}</p>
+        <div class="col-4">
+            <h1>Game to Assign</h1>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Game</h5>
+                    <h5 class="card-text">{{game.schoolName}}</h5>
+                    <h5 class="card-text">{{game.sportName}}</h5>
+                    <h5 class="card-text">{{game.gameTime}}</h5>
+                    <h5 class="card-text">{{game.numberOfReferees}}</h5>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<h1>Assigned Referees</h1>
-{{#each assigned}}
-<div class="container">
-    <div class="row">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{firstName}} {{lastName}}</h5>
-                <p class="card-text">{{firstName}} {{lastName}}</p>
-                <button type="button" class="btn btn-primary js-unassign" referee-id={{id}} game-id={{../game.id}}>Unassign</button>
+        <div class="col-4">
+            <h1>Assigned Referees</h1>
+            {{#each assigned}}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{firstName}} {{lastName}}</h5>
+                    <h5 class="card-text">{{email}}</h5>
+                    <button type="button" class="btn btn-primary js-unassign" referee-id={{id}}
+                        game-id={{../game.id}}>Unassign</button>
+                </div>
             </div>
+            {{/each}}
         </div>
-    </div>
-</div>
-{{/each}}
 
-<h1>Available Referees</h1>
-{{#each available}}
-<div class="container">
-    <div class="row">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{firstName}} {{lastName}}</h5>
-                <p class="card-text">{{firstName}} {{lastName}}</p>
-                <button type="button" class="btn btn-primary js-assign" referee-id={{id}} game-id={{../game.id}}>Assign</button>
+        <div class="col-4">
+            <h1>Available Referees</h1>
+            {{#each available}}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{firstName}} {{lastName}}</h5>
+                    <h5 class="card-text">{{email}}</h5>
+                    <button type="button" class="btn btn-primary js-assign" referee-id={{id}}
+                        game-id={{../game.id}}>Assign</button>
+                </div>
             </div>
+            {{/each}}
         </div>
     </div>
 </div>
-{{/each}}
 
 <script src="/js/assigngame.js"></script>
