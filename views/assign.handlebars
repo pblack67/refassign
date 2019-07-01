@@ -1,3 +1,20 @@
+<h1>Game to Assign</h1>
 {{#each games}}
-{{schoolName}} {{sportName}}
+<div class="container">
+    <div class="row">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Game</h5>
+                <h5 class="card-text">{{schoolName}}</h5>
+                <h5 class="card-text">{{sportName}}</h5>
+                <h5 class="card-text">{{gameTime}}</h5>
+                <h5 class="card-text">{{numberOfReferees}}</h5>
+                <button type="button" class="btn btn-primary js-assign" game-id={{id}}>Assign</button>
+            </div>
+        </div>
+    </div>
+</div>
 {{/each}}
+
+
+<script src="/js/assign.js"></script>
