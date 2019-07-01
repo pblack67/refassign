@@ -87,18 +87,28 @@ async function getGamesWithOpenings(callback) {
     let numOfRefInGames = refInGames.length;
     if (numOfRefInGames < dbGames[i].dataValues.numberOfReferees) {
       availGamesArray.push(game);
-    };
-    console.log('# of ref', numOfRefInGames, 'max # of ref', dbGames[i].dataValues.numberOfReferees);
+    }
+    console.log(
+      "# of ref",
+      numOfRefInGames,
+      "max # of ref",
+      dbGames[i].dataValues.numberOfReferees
+    );
     console.log(availGamesArray[i].dataValues);
-  };
-// eslint-disable-next-line prettier/prettier
-};
+  }
+}
 
+async function getGameById(id, callback) {
+  db.Games.findOne({ where: { id } }).then(result => {
+    callback(result);
+  });
+}
 
 module.exports = {
   getAllReferees,
   getAllGames,
   getAllAvailableReferees,
   getAllAvailableGames,
-  getGamesWithOpenings
+  getGamesWithOpenings,
+  getGameById
 };
