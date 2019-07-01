@@ -34,9 +34,14 @@ module.exports = function(app) {
   app.get("/assign/:gameid", function(req, res) {
     api.getGameById(req.params.gameid, function(game) {
       game.getReferees().then(assigned => {
-        api.getAllAvailableReferees(game.id, function(available) {
+        if (assigned.length >= game.numberOfReferees) {
+          let available = [];
           res.render("assigngame", { game, assigned, available });
-        });
+        } else {
+          api.getAllAvailableReferees(game.id, function(available) {
+            res.render("assigngame", { game, assigned, available });
+          });
+        }
       });
     });
   });
