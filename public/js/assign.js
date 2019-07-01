@@ -3,7 +3,7 @@ $(function() {
     event.preventDefault();
     let gameid = $(this).attr("game-id");
     console.log(gameid);
-    location.href = (`/api/assign/`+ gameid);
+    location.href = (`/assign/`+ gameid);
   });
 });
 
