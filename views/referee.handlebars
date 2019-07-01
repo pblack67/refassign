@@ -6,7 +6,7 @@
   .leftDiv {
     text-align: unset;
     font-size: 150%;
-    color: orangered;
+    color: white;
     background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
     transform: translateX(-100rem);
     animation: slideIn .5s forwards;
@@ -50,24 +50,27 @@
     background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
 
   }
+
 </style>
 <div class="container1">
 
   <div class="leftDiv">
-    <h2>Referees</h2>
-    <hr>
-    <ul>
-       <div class="w3-panel w3-card"></div>
-    {{#each referees}}
-    <li>{{firstName}} {{lastName}} {{address}} {{city}} {{state}} {{zipcode}} {{email}}</li>
-    {{/each}}
-    </ul>
+      <h2>Referees</h2>
+      <hr>
+    <div class="col-sm-12 col-md-6 col-lg-12" style="padding-left: 40px;">
+      <ol>
+        <div class="w3-panel w3-card"></div>
+        {{#each referees}}
+        <li> <span style="color: red;" >{{firstName}} {{lastName}}</span> {{address}} {{city}} {{state}} {{zipcode}} <a href="">{{email}}</a></li>
+        <hr>
+        {{/each}}
+      </ol>
+    </div>
   </div>
   <div class="rightDiv">
     <h2>Registration</h2>
     <hr>
     <h3>Please register new game!</h3>
-
     <div class="col-sm-12 col-md-6 col-lg-12">
       <div class="form-group">
         <label for="fname">First Name:</label>
