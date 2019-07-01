@@ -14,12 +14,14 @@
 
     button:active {
         transform: scale(0.95);
-            padding: 10px 40px;
+        padding: 10px 40px;
 
     }
+
     button:hover {
-    color: blue;
-  }
+        color: blue;
+    }
+
     button:focus {
         outline: none;
     }
@@ -60,7 +62,7 @@
         max-width: 100%;
         min-height: 480px;
         transform: translateY(100rem);
-    animation: slideIn .7s forwards;
+        animation: slideIn .7s forwards;
     }
 
     .form-container {
@@ -212,7 +214,7 @@
         </form>
     </div>
     <div class="overlay-container">
-        <div class="overlay2" >
+        <div class="overlay2">
             <div class="overlay-panel overlay-left">
                 <h1>Welcome Back!</h1>
                 <p>To keep connected with us please login with your personal info</p>
@@ -227,13 +229,15 @@
     </div>
 </div>
 <script>
-    const signUpButton = document.getElementById('signUp');
-    const signInButton = document.getElementById('signIn');
-    const container = document.getElementById('container');
-    signUpButton.addEventListener('click', () => {
-        container1.classList.add("right-panel-active");
-    });
-    signInButton.addEventListener('click', () => {
-        container1.classList.remove("right-panel-active");
-    });
+    $(function () {
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+        signUpButton.addEventListener('click', () => {
+            container1.classList.add("right-panel-active");
+        });
+        signInButton.addEventListener('click', () => {
+            container1.classList.remove("right-panel-active");
+        });
+    })
 </script>
