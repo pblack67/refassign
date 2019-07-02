@@ -1,16 +1,18 @@
-<h1>Games Assigned</h1>
-{{#each games}}
 <div class="container">
     <div class="row">
+        <h1>Games Assigned</h1>
+    </div>
+    <div class="row">
+        {{#each games}}
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Game</h5>
+                <h5 class="card-title">Game {{id}}</h5>
                 <h5 class="card-text">{{schoolName}}</h5>
                 <h5 class="card-text">{{sportName}}</h5>
                 <h5 class="card-text">{{gameTime}}</h5>
-                <h5 class="card-text">{{numberOfReferees}}</h5>
+                <h5 class="card-text">{{numberOfReferees}} Referees</h5>
             </div>
         </div>
+        {{/each}}
     </div>
 </div>
-{{/each}}

@@ -4,11 +4,11 @@ const sendAssignmentMail = require("./sendAssignmentMail");
 
 module.exports = function(app) {
   // Create login cookie
-  app.post("/login/userdata", function(req, res) {
-    console.log(req.body);
-    res.cookie("email", req.body.email);
-    res.cookie("role", req.body.role);
-    res.end();
+  app.post("/login/userdata", (request, response) => {
+    console.log(request.body);
+    response.cookie("email", request.body.email);
+    response.cookie("role", request.body.role);
+    response.end();
   });
 
   // Get all referees
