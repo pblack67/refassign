@@ -52,6 +52,14 @@ async function sendAssignmentMail(referee, game) {
 }
 
 module.exports = function(app) {
+  // Create login cookie
+  app.post("/login/userdata", function(req, res) {
+    console.log(req.body);
+    res.cookie("email", req.body.email);
+    res.cookie("role", req.body.role);
+    res.end();
+  });
+
   // Get all referees
   app.get("/api/referees", (request, response) => {
     api.getAllReferees(dbReferees => {

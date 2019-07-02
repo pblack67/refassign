@@ -231,10 +231,10 @@
         </div>
     </div>
 </div>
- <script src="https://code.jquery.com/jquery.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <script>
-    
+
     $(function () {
         const signUpButton = document.getElementById('signUp');
         const signInButton = document.getElementById('signIn');
@@ -246,13 +246,25 @@
             container1.classList.remove("right-panel-active");
         });
     })
-    
-    $("#sign-in").on("click", function(){
-        var form1 = $("#email").val()
-        var form2 = $("#element2").val()
-        console.log(form1, form2)
-        var formObject = {form1, form2}
+
+    $("#sign-in").on("click", function () {
+        var email = $("#email").val()
+        var role = $("#element2").val()
+        var formObject = {
+            email,
+            role
+        }
+        $.post(`/login/userdata`, formObject, function (
+            data,
+            status
+        ) {
+            if (role.toLowerCase() === "referee") {
+                location.href = "/referee/games";
+            } else {
+                location.href = "/";
+            }
+        });
     })
-   
-   
+
+
 </script>
