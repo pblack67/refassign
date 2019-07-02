@@ -26,7 +26,7 @@ module.exports = function(app) {
   });
 
   app.get("/assign", function(req, res) {
-    api.getGamesWithOpenings(games => {
+    api.getAllGames(games => {
       res.render("assign", { games });
     });
   });
