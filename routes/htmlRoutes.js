@@ -21,6 +21,15 @@ module.exports = function(app) {
     res.render("login");
   });
 
+  app.get("/login/userdata", function(req, res) {
+    console.log(req.body);
+    // res.cookie("email", req.body.email);
+    // res.cookie("role", req.body.role);
+    res.cookie("email", "pblack67@comcast.net");
+    res.cookie("role", "Referee");
+    res.render("index");
+  });
+
   app.get("/contact", function(req, res) {
     res.render("contact");
   });
@@ -42,6 +51,14 @@ module.exports = function(app) {
             res.render("assigngame", { game, assigned, available });
           });
         }
+      });
+    });
+  });
+
+  app.get("/referee/games", function(req, res) {
+    api.getRefereeByEmail(req.cookies.email, referee => {
+      referee.getGames().then(games => {
+        res.render("refereegames", { games });
       });
     });
   });
