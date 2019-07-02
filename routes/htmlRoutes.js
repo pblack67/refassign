@@ -48,9 +48,13 @@ module.exports = function(app) {
 
   app.get("/referee/games", function(req, res) {
     api.getRefereeByEmail(req.cookies.email, referee => {
-      referee.getGames().then(games => {
-        res.render("refereegames", { games });
-      });
+      if (referee) {
+        referee.getGames().then(games => {
+          res.render("refereegames", { games });
+        });
+      } else {
+        res.render("404");
+      }
     });
   });
 
