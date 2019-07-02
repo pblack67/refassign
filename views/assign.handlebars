@@ -1,15 +1,41 @@
+ 
+ <style>
+     .text-secondary {
+    color: #eece1a;
+  }
+  .row-body {
+      display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 2rem;
+    border: 3px #fff solid;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem;
+    transition: all 0.5s ease-out;
+    color:white;
+    
+  }
+
+  .row-body:hover {
+    padding: 1rem 2rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+    color: white;
+  }
+</style>
 <h1>Game to Assign</h1>
 {{#each games}}
 <div class="container">
     <div class="row">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Game</h5>
-                <h5 class="card-text">{{schoolName}}</h5>
-                <h5 class="card-text">{{sportName}}</h5>
-                <h5 class="card-text">{{gameTime}}</h5>
-                <h5 class="card-text">{{numberOfReferees}}</h5>
-                <button type="button" class="btn btn-primary js-assign" game-id={{id}}>Assign</button>
+        <div class=.row" style="width: 18rem;">
+            <div class="row-body">
+                <h5 class=.row-title">Game</h5>
+                <h5 class=.row-text">{{schoolName}}</h5>
+                <h5 class=.row-text">{{sportName}}</h5>
+                <h5 class=.row-text">{{gameTime}}</h5>
+                <h5 class=.row-text">{{numberOfReferees}}</h5>
+                <button type="button" class="btn btn-outline-danger js-assign" game-id={{id}}>Assign</button>
             </div>
         </div>
     </div>
