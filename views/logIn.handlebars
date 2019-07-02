@@ -210,7 +210,6 @@
             <h1>Sign In</h1>
             <input type="email" id="email" placeholder="Email" />
             <select class="custom-select custom-select-lg mb-3" id="element2">
-                <option selected>Choose Role</option>
                 <option value="referee">Referee</option>
                 <option value="admin">Admin</option>
             </select>
@@ -252,6 +251,7 @@
         var form1 = $("#email").val()
         var form2 = $("#element2").val()
         console.log(form1, form2)
+        var formObject = {form1, form2}
     })
    
    
