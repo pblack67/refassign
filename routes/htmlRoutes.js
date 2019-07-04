@@ -1,13 +1,8 @@
 const api = require("./api");
 
 module.exports = function(app) {
-<<<<<<< HEAD
-  app.get("/", function(req, res) {
-    res.render("index", {layout: 'backend'});
-=======
   app.get("/", (req, res) => {
     res.render("index");
->>>>>>> 9231bf50a4a4ddeb9e949fd04c9647d2c80687ea
   });
 
   app.get("/game", (req, res) => {
@@ -22,13 +17,8 @@ module.exports = function(app) {
     });
   });
 
-<<<<<<< HEAD
-  app.get("/home", function(req, res) {
-    res.render("home");
-=======
   app.get("/logIn", (req, res) => {
     res.render("logIn");
->>>>>>> 9231bf50a4a4ddeb9e949fd04c9647d2c80687ea
   });
 
   app.get("/contact", (req, res) => {
