@@ -1,4 +1,10 @@
 <style>
+<<<<<<< HEAD
+=======
+  .text-secondary {
+    color: #eece1a;
+  }
+>>>>>>> 9231bf50a4a4ddeb9e949fd04c9647d2c80687ea
 
   .row-body {
     display: flex;
@@ -12,6 +18,10 @@
     margin-bottom: 3rem;
     transition: all 0.5s ease-out;
     color: white;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9231bf50a4a4ddeb9e949fd04c9647d2c80687ea
   }
 
   .row-body:hover {
@@ -21,6 +31,7 @@
   }
 </style>
 <h1>Game to Assign</h1>
+<<<<<<< HEAD
   <div class="row">
 {{#each games}}
 <div class="container">
@@ -37,9 +48,25 @@
       </div>
     </div>
 
+=======
+<div class="container">
+
+  <div class="row" style="_width: 36rem;">
+    <div class="col-12">
+      {{#each games}}
+      <div class="row-body">
+        <h5 class=.row-title">Game {{id}}</h5><br>
+        <h5 class=.row-text">{{schoolName}}</h5><br>
+        <h5 class=.row-text">{{sportName}}</h5><br>
+        <h5 class=.row-text">{{gameTime}}</h5><br>
+        <h5 class=.row-text">{{numberOfReferees}} Referees</h5><br>
+        <button type="button" class="btn btn-outline-danger js-assign" game-id={{id}}>Assign</button>
+      </div>
+      {{/each}}
+    </div>
+>>>>>>> 9231bf50a4a4ddeb9e949fd04c9647d2c80687ea
   </div>
 </div>
-{{/each}}
 
 
 <script src="/js/assign.js"></script>
