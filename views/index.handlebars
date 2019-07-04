@@ -36,9 +36,17 @@
     
 
   <div class="leftDiv">
-
     <h2>Referees!</h2>
     <hr>
+    <ol>
+        <div class="w3-panel w3-card"></div>
+        {{#each referees}}
+        <li> <span style="color: red;" >{{firstName}} {{lastName}}</span> {{address}} {{city}} {{state}} {{zipcode}} <a href="">{{email}}</a></li>
+        <hr>
+        {{/each}}
+      </ol>
+
+    
   </div>
   </div>
       <div class="col-sm-12 col-md-12 col-lg-6">
@@ -46,7 +54,15 @@
   <div class="rightDiv">
     <h2>Games!</h2>
     <hr>
+    <ol>
+        <div class="w3-panel w3-card"></div>
+        {{#each games}}
+        <li> <span style="color: red;" >{{schoolName}} {{sportName}} {{gameTime}}</span> </a></li>
+        <hr>
+        {{/each}}
+      </ol>
   </div>
   </div>
   </div>
 </div>
+<script src="/js/index.js"></script>
