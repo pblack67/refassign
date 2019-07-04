@@ -2,7 +2,7 @@ const api = require("./api");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    res.render("index");
+    res.render("index", {layout: 'backend'});
   });
 
   app.get("/game", function(req, res) {
@@ -17,8 +17,8 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/login", function(req, res) {
-    res.render("login");
+  app.get("/home", function(req, res) {
+    res.render("home");
   });
 
   app.get("/contact", function(req, res) {
