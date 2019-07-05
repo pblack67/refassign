@@ -16,34 +16,34 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/referee", function (req, res) {
+  app.get("/referee", (req, res) => {
     api.getAllReferees(referees => {
       res.render("referee", { referees });
     });
   });
 
-  app.get("/login", function (req, res) {
-    res.render("login");
+  app.get("/logIn", (req, res) => {
+    res.render("logIn");
   });
 
-  app.get("/contact", function (req, res) {
+  app.get("/contact", (req, res) => {
     res.render("contact");
   });
 
-  app.get("/assign", function (req, res) {
+  app.get("/assign", (req, res) => {
     api.getAllGames(games => {
       res.render("assign", { games });
     });
   });
 
-  app.get("/assign/:gameid", function (req, res) {
-    api.getGameById(req.params.gameid, function (game) {
+  app.get("/assign/:gameid", (req, res) => {
+    api.getGameById(req.params.gameid, game => {
       game.getReferees().then(assigned => {
         if (assigned.length >= game.numberOfReferees) {
           let available = [];
           res.render("assigngame", { game, assigned, available });
         } else {
-          api.getAllAvailableReferees(game.id, function (available) {
+          api.getAllAvailableReferees(game.id, available => {
             res.render("assigngame", { game, assigned, available });
           });
         }
@@ -51,16 +51,20 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/referee/games", function (req, res) {
+  app.get("/referee/games", (req, res) => {
     api.getRefereeByEmail(req.cookies.email, referee => {
-      referee.getGames().then(games => {
-        res.render("refereegames", { games });
-      });
+      if (referee) {
+        referee.getGames().then(games => {
+          res.render("refereegames", { games });
+        });
+      } else {
+        res.render("404");
+      }
     });
   });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function (req, res) {
+  app.get("*", (req, res) => {
     res.render("404");
   });
 };
