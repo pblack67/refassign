@@ -11,7 +11,7 @@
     transform: translateX(-100rem);
     animation: slideIn .5s forwards;
     width: 40%;
-    height: 500px;
+    height: 600px;
     margin: 20px 20px 20px 80px;
     float: left;
   }
@@ -21,7 +21,7 @@
     transform: translateX(100rem);
     animation: slideIn .5s forwards;
     width: 40%;
-    height: 500px;
+    height: 600px;
     margin: 20px 80px 20px 20px;
     float: right
   }
@@ -50,18 +50,18 @@
     background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
 
   }
-
 </style>
 <div class="container1">
 
   <div class="leftDiv">
-      <h2>Referees</h2>
-      <hr>
+    <h2>Referees</h2>
+    <hr>
     <div class="col-sm-12 col-md-6 col-lg-12" style="padding-left: 40px;">
       <ol>
         <div class="w3-panel w3-card"></div>
         {{#each referees}}
-        <li> <span style="color: red;" >{{firstName}} {{lastName}}</span> {{address}} {{city}} {{state}} {{zipcode}} <a href="">{{email}}</a></li>
+        <li> <span style="color: red;">{{firstName}} {{lastName}}</span> {{address}} {{city}} {{state}} {{zipcode}} <a
+            href="">{{email}}</a></li>
         <hr>
         {{/each}}
       </ol>
@@ -130,5 +130,8 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <script src="/js/referee.js"></script>
+
+<script src="/js/referee.js"></script>
