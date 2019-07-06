@@ -2,7 +2,11 @@
   .container1 {
     width: 100%;
   }
+
   .leftDiv {
+    text-align: unset;
+    font-size: 150%;
+    color: white;
     background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
     transform: translateX(-100rem);
     animation: slideIn .5s forwards;
@@ -11,6 +15,7 @@
     margin: 20px 20px 20px 80px;
     float: left;
   }
+
   .rightDiv {
     background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
     transform: translateX(100rem);
@@ -20,6 +25,7 @@
     margin: 20px 80px 20px 20px;
     float: right
   }
+
   h2 {
     color: white;
     text-align: center;
@@ -44,18 +50,27 @@
     background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
 
   }
+
 </style>
 <div class="container1">
 
   <div class="leftDiv">
-    <h2>Referees</h2>
-    <hr>
+      <h2>Referees</h2>
+      <hr>
+    <div class="col-sm-12 col-md-6 col-lg-12" style="padding-left: 40px;">
+      <ol>
+        <div class="w3-panel w3-card"></div>
+        {{#each referees}}
+        <li> <span style="color: red;" >{{firstName}} {{lastName}}</span> {{address}} {{city}} {{state}} {{zipcode}} <a href="">{{email}}</a></li>
+        <hr>
+        {{/each}}
+      </ol>
+    </div>
   </div>
   <div class="rightDiv">
     <h2>Registration</h2>
     <hr>
     <h3>Please register new game!</h3>
-
     <div class="col-sm-12 col-md-6 col-lg-12">
       <div class="form-group">
         <label for="fname">First Name:</label>
@@ -72,30 +87,37 @@
     </div>
     <div class="col-sm-12 col-md-6 col-lg-12">
       <div class="form-group">
-        <label for="fname">Address:</label>
-        <input type="text" class="form-control" id="firstname-input" name="fname" required>
-        <div class="alert-danger text-center" id="needFirstName"></div>
+        <label for="address">Address:</label>
+        <input type="text" class="form-control" id="address-input" name="address" required>
+        <div class="alert-danger text-center" id="needAddress"></div>
       </div>
     </div>
     <div class="col-sm-12 col-md-6 col-lg-12">
       <div class="form-group">
-        <label for="lname">City</label>
-        <input type="text" class="form-control" id="lastname-input" name="address" required>
-        <div class="alert-danger text-center" id="address"></div>
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city-input" name="city" required>
+        <div class="alert-danger text-center" id="needCity"></div>
       </div>
     </div>
     <div class="col-sm-12 col-md-6 col-lg-12">
       <div class="form-group">
-        <label for="lname">State</label>
-        <input type="text" class="form-control" id="lastname-input" name="city" required>
-        <div class="alert-danger text-center" id="address"></div>
+        <label for="state">State</label>
+        <input type="text" class="form-control" id="state-input" name="state" required>
+        <div class="alert-danger text-center" id="needState"></div>
       </div>
     </div>
     <div class="col-sm-12 col-md-6 col-lg-12">
       <div class="form-group">
-        <label for="location">Zipcode:</label>
-        <input type="number" class="form-control" id="location-input" name="state" required>
-        <div class="alert-danger text-center" id="address"></div>
+        <label for="zipcode">Zipcode:</label>
+        <input type="number" class="form-control" id="zipcode-input" name="zipcode" required>
+        <div class="alert-danger text-center" id="needZipcode"></div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-12">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" class="form-control" id="email-input" name="email" required>
+        <div class="alert-danger text-center" id="needEmail"></div>
       </div>
     </div>
     <div class="col-sm-12 col-md-6 col-lg-6">
@@ -108,3 +130,5 @@
         </div>
       </div>
     </div>
+
+    <script src="/js/referee.js"></script>

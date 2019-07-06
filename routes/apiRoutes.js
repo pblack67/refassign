@@ -1,55 +1,16 @@
 const db = require("../models");
 const api = require("./api");
-const nodemailer = require("nodemailer");
-require("dotenv").config();
-
-async function sendAssignmentMail(referee, game) {
-  if (process.env.EMAIL_USER) {
-    let transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false, // true for 465, false for other ports
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD
-      }
-    });
-
-    let assignmentText = `Congratulations ${referee.firstName}! 
-    
-  You've been assigned a new ${game.sportName} game.
-  
-  Time: ${game.gameTime}
-  Place: ${game.schoolName}
-  
-  Good luck! And may the calls be with you.
-  
-  The Referee Assignor`;
-
-    let assignmentHTML = `Congratulations ${referee.firstName}!<br>
-  <br>  
-  You've been assigned a new ${game.sportName} game.<br>
-  <br>
-  Time: ${game.gameTime}<br>
-  Place: ${game.schoolName}<br>
-  <br>
-  Good luck! And may the calls be with you.<br>
-  <br>
-  The Referee Assignor`;
-
-    let info = await transporter.sendMail({
-      from: '"Referee Assigner" <refassign312@gmail.com',
-      to: referee.email,
-      subject: "Game Assignment",
-      text: assignmentText,
-      html: assignmentHTML
-    });
-
-    console.log("Message sent: %s", info.messageId);
-  }
-}
+const sendAssignmentMail = require("./sendAssignmentMail");
 
 module.exports = function(app) {
+  // Create login cookie
+  app.post("/login/userdata", (request, response) => {
+    console.log(request.body);
+    response.cookie("email", request.body.email);
+    response.cookie("role", request.body.role);
+    response.end();
+  });
+
   // Get all referees
   app.get("/api/referees", (request, response) => {
     api.getAllReferees(dbReferees => {
@@ -132,7 +93,7 @@ module.exports = function(app) {
     });
   });
 
-  // Asssign referee to a game
+  // Assign referee to a game
   app.post(
     "/api/assignments/referee/:refereeid/:gameid",
     (request, response) => {
@@ -146,6 +107,31 @@ module.exports = function(app) {
             if (game) {
               referee.addGames([game]);
               sendAssignmentMail(referee, game);
+              response.json(true);
+            } else {
+              response.json(false);
+            }
+          });
+        } else {
+          response.json(false);
+        }
+      });
+    }
+  );
+
+  // Unassign a referee from a game
+  app.delete(
+    "/api/assignments/referee/:refereeid/:gameid",
+    (request, response) => {
+      db.Referees.findOne({
+        where: { id: request.params.refereeid }
+      }).then(referee => {
+        if (referee) {
+          db.Games.findOne({
+            where: { id: request.params.gameid }
+          }).then(game => {
+            if (game) {
+              referee.removeGame([game]);
               response.json(true);
             } else {
               response.json(false);
@@ -207,4 +193,11 @@ module.exports = function(app) {
       response.json(results);
     });
   });
-};
+
+  // Get all games with spots remaining
+  app.get("/api/assignments/availableGames", (request, response) => {
+    api.getGamesWithOpenings(dbGames => {
+      response.json(dbGames);
+    });
+  });
+}; // module closing bracket

@@ -60,6 +60,7 @@ header {
   max-width: 120rem;
   width: 90%;
   margin: 0 auto;
+  
 }
 
 .menu-toggle {
@@ -125,6 +126,9 @@ nav ul li:nth-child(5) {
 }
 nav ul li:nth-child(6) {
   animation-delay: .5s;
+}
+nav ul li:nth-child(7) {
+  animation-delay: .7s;
 }
 nav ul li a {
   padding: 1rem 0;
@@ -249,6 +253,19 @@ h3{
   text-align: center;
   margin-top: -20px;
 }
+h4{
+  color: white;
+  margin-top: 20px;
+  font-size: 20px;
+  border-bottom: 2px solid red;
+}
 
+footer{
+  padding:20px;
+  margin-top:20px;
+  color:#ffffff;
+  background-color:#e8491d;
+  text-align: center;
+}
 
 

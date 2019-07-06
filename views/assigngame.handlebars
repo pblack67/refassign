@@ -1,0 +1,81 @@
+<style>
+   .text-secondary {
+    color: #eece1a;
+  }
+
+  .card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 2rem;
+    border: 3px #fff solid;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem;
+    transition: all 0.5s ease-out;
+    color:white;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(65, 65, 64, 0.1)), center no-repeat;
+    
+  }
+
+  .card:hover {
+    padding: 1rem 2rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+    color: white;
+  }
+
+  .row div:hover span {
+    color:chocolate;
+    opacity: 25%;
+    
+
+  }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h1>Game to Assign</h1>
+            <div class="card">
+                <div class=.card">
+                    <h5 class="card-title">Game {{game.id}}</h5>
+                    <h5 class="card-text">{{game.schoolName}}</h5>
+                    <h5 class="card-text">{{game.sportName}}</h5>
+                    <h5 class="card-text">{{game.gameTime}}</h5>
+                    <h5 class="card-text">{{game.numberOfReferees}} Referees</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <h1>Assigned Referees</h1>
+            {{#each assigned}}
+            <div class="card">
+                <div class=.card">
+                    <h5 class="card-title">{{firstName}} {{lastName}}</h5>
+                    <h5 class="card-text">{{email}}</h5>
+                    <button type="button" class="btn btn-outline-danger js-unassign" referee-id={{id}}
+                        game-id={{../game.id}}>Unassign</button>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        <div class="col-4">
+            <h1>Available Referees</h1>
+            {{#each available}}
+            <div class="card">
+                <div class=.card">
+                    <h5 class="card-title">{{firstName}} {{lastName}}</h5>
+                    <h5 class="card-text">{{email}}</h5>
+                    <button type="button" class="btn btn-outline-danger js-assign" referee-id={{id}}
+                        game-id={{../game.id}}>Assign</button>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<script src="/js/assigngame.js"></script>

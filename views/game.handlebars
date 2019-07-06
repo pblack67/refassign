@@ -2,7 +2,11 @@
   .container1 {
     width: 100%;
   }
+
   .leftDiv {
+    text-align: unset;
+    font-size: 150%;
+    color: white;
     background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
     transform: translateX(-100rem);
     animation: slideIn .5s forwards;
@@ -10,6 +14,10 @@
     height: 500px;
     margin: 20px 20px 20px 80px;
     float: left;
+  }
+
+  .leftDiv ol {
+    margin: 20px;
   }
 
   .rightDiv {
@@ -46,12 +54,37 @@
     background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
 
   }
+  
 </style>
 <div class="container1">
 
   <div class="leftDiv">
-    <h2>Games</h2>
-    <hr>
+
+
+      <h2>Games</h2>
+      <hr>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-6">
+        <ol>
+          <h4>Schools</h4>
+          {{#each games}}
+          <li>{{schoolName}}
+            <hr>
+          </li>
+          {{/each}}
+        </ol>
+      </div>
+
+      <div class="col-sm-12 col-md-6 col-lg-6">
+        <ol>
+          <h4>Sports</h4>
+          {{#each games}}
+          {{sportName}}
+          <hr>
+          {{/each}}
+        </ol>
+      </div>
+    </div>
   </div>
   <div class="rightDiv">
     <h2>Registration</h2>
@@ -60,32 +93,43 @@
     <div class="col-sm-12 col-md-6 col-lg-12">
       <div class="form-group">
         <label for="dayofweek">School:</label>
-        <select class="form-control" id="dateDay-input">
+        <select class="form-control" id="schoolName-input">
           <option>Loyola Academy (Wilmette)</option>
           <option>Brother Rice (Chicago)</option>
           <option>Marist (Chicago)</option>
           <option>Chicago Mt. Carmel (Chicago)</option>
           <option>Simeon (Chicago)</option>
-          <option>Nazareth Academy (LaGrange Park)</option>
-          <option>	Lincoln-Way East (Frankfort)</option>
+          <option>Nazareth Academy (LaGrange)</option>
+          <option>Lincoln-Way East (Frankfort)</option>
+          <option>John Hersey (Arlington)</option>
+          <option>Prospect (Mt. Prospect)</option>
+          <option>James B. Conant (Hoffman)</option>
+          <option>Schaumburg (Schaumburg)</option>
+          <option>William Fremd (Palatine)</option>
+          <option>Palatine (Palatine)</option>
+          <option>Hoffman Estates (Hoffman)</option>
         </select>
-
       </div>
     </div>
     <div class="col-sm-12 col-md-6 col-lg-12">
       <div class="form-group">
         <label for="dayofweek">Sport:</label>
-        <select class="form-control" id="dateDay-input">
+        <select class="form-control" id="sportName-input">
           <option>Soccer</option>
           <option>Football</option>
+          <option>Competitive Dance</option>
+          <option>Cheerleading</option>
+          <option>Wrestling</option>
+          <option>Lacrosse</options>
+          <option>Water Polo</option>
+          <option>Baseball</option>
         </select>
-
       </div>
     </div>
     <div class="col-sm-12 col-md-6 col-lg-12">
       <div class="form-group">
         <label for="date">Date:<span class="kv-reqd"></label>
-        <input type="date" class="form-control" id="date-input" name="date" required>
+        <input type="datetime-local" class="form-control" id="gameTime-input" name="date" required>
         <div class="alert-danger text-center" id="date"></div>
       </div>
 
@@ -93,19 +137,18 @@
     <div class="col-sm-12 col-md-6 col-lg-12">
       <div class="form-group">
         <label for="number">Number of Referees:<span class="kv-reqd"></label>
-        <input type="number" class="form-control" id="number-input" name="number" required>
+        <input type="number" class="form-control" id="numberOfReferees-input" name="number" required>
         <div class="alert-danger text-center" id="number"></div>
       </div>
 
     </div>
 
     <div class="col-sm-12 col-md-6 col-lg-6">
-
       <div class="form-group">
         <hr>
         <div class="text-center">
           <button type="button" id="create" class="btn btn-outline-danger btn-block">Create</button>
-
         </div>
       </div>
     </div>
+    <script src="/js/game.js"></script>
