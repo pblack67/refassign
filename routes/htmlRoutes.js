@@ -31,6 +31,7 @@ module.exports = function(app) {
     });
   });
 
+  // Display page with all available refrees for this game if there are still spots to fill
   app.get("/assign/:gameid", (req, res) => {
     api.getGameById(req.params.gameid, game => {
       game.getReferees().then(assigned => {
@@ -46,6 +47,7 @@ module.exports = function(app) {
     });
   });
 
+  // Display page for all games assigned to a given referee
   app.get("/referee/games", (req, res) => {
     api.getRefereeByEmail(req.cookies.email, referee => {
       if (referee) {
