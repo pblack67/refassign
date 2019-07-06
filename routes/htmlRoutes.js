@@ -1,11 +1,16 @@
 const api = require("./api");
 
-module.exports = function(app) {
-  app.get("/", (req, res) => {
-    res.render("index");
-  });
+module.exports = function (app) {
 
-  app.get("/game", (req, res) => {
+
+  app.get("/", function (req, res) {
+    api.getAllGames(games => api.getAllReferees(referees => {
+      res.render("index", {games, referees})
+    })
+    )
+  })
+  
+  app.get("/game", function (req, res) {
     api.getAllGames(games => {
       res.render("game", { games });
     });
