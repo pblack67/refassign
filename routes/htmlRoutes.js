@@ -4,11 +4,11 @@ module.exports = function (app) {
 
 
   app.get("/", function (req, res) {
-    api.getAllGames(games => api.getAllReferees(referees => {
-      res.render("index", {games, referees})
+    // api.getAllGames(games => api.getAllReferees(referees => {
+      res.render("index")
     })
-    )
-  })
+  //   )
+  // })
   
   app.get("/game", function (req, res) {
     api.getAllGames(games => {
@@ -22,9 +22,9 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/logIn", (req, res) => {
-    res.render("logIn");
-  });
+  // app.get("/logIn", (req, res) => {
+  //   res.render("logIn");
+  // });
 
   app.get("/contact", (req, res) => {
     res.render("contact");
