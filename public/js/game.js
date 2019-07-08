@@ -1,4 +1,3 @@
-// create function to populate game on game page
 $(function() {
   $(document).on("click", "#create", function(event) {
     event.preventDefault();

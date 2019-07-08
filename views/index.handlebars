@@ -15,7 +15,6 @@
     button:active {
         transform: scale(0.95);
         padding: 10px 40px;
-
     }
 
     button:hover {
@@ -40,7 +39,6 @@
         height: 100%;
         text-align: center;
         background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
-
     }
 
     input {
@@ -53,7 +51,6 @@
 
     #container1 {
         background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
-
         border-radius: 10px;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
             0 10px 10px rgba(0, 0, 0, 0.22);
@@ -79,7 +76,6 @@
         z-index: 2;
     }
 
-
     .social-container {
         margin: 20px 0;
     }
@@ -88,17 +84,8 @@
         color: red;
     }
 </style>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-            <p>Calling all referees, umpires and judges! Don't let old technology hold you back by looking no
-                further than Whistle for your newest complete assigning solution.</p>
-        </div>
-    </div>
-</div>
 
 <div class="container " id="container1">
-
     <div class="form-container sign-in-container">
         <form action="#">
             <h1><span>Wel</span>come!</h1>
@@ -111,58 +98,8 @@
             <button id="sign-in">Log In</button>
         </form>
     </div>
-
 </div>
+
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-<script>
-
-
-
-    $("#sign-in").on("click", function () {
-        var email = $("#email").val()
-        var role = $("#element2").val()
-        var formObject = {
-            email,
-            role
-        }
-        $.post(`/login/userdata`, formObject, function (
-            data,
-            status
-        ) {
-            if (role.toLowerCase() === "referee") {
-                location.href = "/referee/games";
-            } else {
-                location.href = "/referee";
-            }
-        });
-    })
-</script>
-
-{{!-- <div class="leftDiv">
-    <h2>Referees!</h2>
-    <hr>
-    <ol>
-        <div class="w3-panel w3-card"></div>
-        {{#each referees}}
-        <li> <span style="color: red;">{{firstName}} {{lastName}}</span> {{address}} {{city}} {{state}} {{zipcode}} <a
-                href="">{{email}}</a></li>
-        <hr>
-        {{/each}}
-    </ol>
-</div>
-<div class="col-sm-12 col-md-12 col-lg-6">
-
-    <div class="rightDiv">
-        <h2>Games!</h2>
-        <hr>
-        <ol>
-            <div class="w3-panel w3-card"></div>
-            {{#each games}}
-            <li> <span style="color: red;">{{schoolName}} {{sportName}} {{gameTime}}</span> </a></li>
-            <hr>
-            {{/each}}
-        </ol>
-    </div>
-</div>
-<script src="/js/index.js"></script> --}}
+<script src="/js/index.js"></script>

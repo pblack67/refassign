@@ -1,16 +1,11 @@
 const api = require("./api");
 
-module.exports = function (app) {
+module.exports = function(app) {
+  app.get("/", function(req, res) {
+    res.render("index");
+  });
 
-
-  app.get("/", function (req, res) {
-    // api.getAllGames(games => api.getAllReferees(referees => {
-      res.render("index")
-    })
-  //   )
-  // })
-  
-  app.get("/game", function (req, res) {
+  app.get("/game", function(req, res) {
     api.getAllGames(games => {
       res.render("game", { games });
     });
@@ -21,10 +16,6 @@ module.exports = function (app) {
       res.render("referee", { referees });
     });
   });
-
-  // app.get("/logIn", (req, res) => {
-  //   res.render("logIn");
-  // });
 
   app.get("/contact", (req, res) => {
     res.render("contact");

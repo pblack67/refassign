@@ -200,4 +200,4 @@ module.exports = function(app) {
       response.json(dbGames);
     });
   });
-}; // module closing bracket
+};

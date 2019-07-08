@@ -36,6 +36,3 @@ module.exports = function(sequelize, DataTypes) {
 
   return Referees;
 };
-
-// Sample distance query for Google Maps Disane Matrix API
-// https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=Chicago+IL&destinations=Schaumburg+IL&key=
