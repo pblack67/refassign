@@ -320,10 +320,14 @@ label {
 
 .row-body:hover {
   padding: 1rem 2rem;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8),
+      rgba(65, 65, 64, 0.5)
+    ),
+    center no-repeat;
   color: white;
 }
-
 
 #sign-in-button {
   border-radius: 20px;
@@ -353,21 +357,62 @@ label {
 
 #sign-in-button.ghost {
   background-color: transparent;
-  border-color: #FFFFFF;
+  border-color: #ffffff;
 }
 
 #login-container {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8),
+      rgba(65, 65, 64, 0.5)
+    ),
+    center no-repeat;
   border-radius: 10px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-      0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
   overflow: hidden;
   width: 450px;
   max-width: 100%;
   min-height: 480px;
   transform: translateY(100rem);
-  animation: slideIn .7s forwards;
+  animation: slideIn 0.7s forwards;
+}
+
+.align-center {
+  text-align: center;
+}
+
+#info-box {
+  transform: translateY(-100rem);
+  animation: slideIn 0.7s forwards;
+}
+
+.red-border {
+  color: red;
+  border: 1px solid;
+}
+
+.info-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.info-boxes div {
+  font-size: 2rem;
+  border: 3px #fff solid;
+  padding: 1.5rem 2.5rem;
+  margin-bottom: 3rem;
+  transition: all 0.5s ease-out;
+  color: white;
+}
+
+.info-boxes div:hover {
+  padding: 0.5rem 1.5rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+  color: white;
 }
 
 @keyframes slideIn {
@@ -387,7 +432,12 @@ label {
   padding: 0 50px;
   height: 100%;
   text-align: center;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8),
+      rgba(65, 65, 64, 0.5)
+    ),
+    center no-repeat;
 }
 
 #login-email {
