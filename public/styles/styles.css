@@ -199,6 +199,57 @@ nav ul li a:hover::after {
   color: blue;
 }
 
+.container-100 {
+  width: 100%;
+}
+
+.referee-list {
+  text-align: unset;
+  font-size: 150%;
+  color: white;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+  transform: translateX(-100rem);
+  animation: slideIn .5s forwards;
+  width: 40%;
+  height: 600px;
+  margin: 20px 20px 20px 80px;
+  float: left;
+}
+
+.referee-create {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+  transform: translateX(100rem);
+  animation: slideIn .5s forwards;
+  width: 40%;
+  height: 600px;
+  margin: 20px 80px 20px 20px;
+  float: right
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  border-bottom: 2px solid red;
+  padding: 20px 0;
+}
+
+label {
+  color: white;
+  text-align: center;
+  font-size: 13px;
+}
+
+#referee-create {
+  color: white;
+  font-size: 15px;
+}
+
+#referee-create:hover {
+  color: white;
+  font-size: 20px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
+}
+
 @keyframes slideIn {
   from {}
 
