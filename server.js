@@ -24,8 +24,8 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes/Controllers
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require("./controllers/apiController")(app);
+require("./controllers/htmlController")(app);
 
 let syncOptions = { force: false };
 
