@@ -1,34 +1,10 @@
-<style>
-    .card {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        align-items: center;
-        margin-top: 1rem;
-        font-size: 2rem;
-        border: 3px #fff solid;
-        padding: 1.5rem 2.5rem;
-        margin-bottom: 3rem;
-        transition: all 0.5s ease-out;
-        color: white;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(65, 65, 64, 0.1)), center no-repeat;
-
-    }
-
-    .card:hover {
-        padding: 1rem 2rem;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
-        color: white;
-    }
-</style>
-
 <div class="container">
     <div class="row">
         <h1>Games Assigned</h1>
     </div>
     <div class="row">
         {{#each games}}
-        <div class="card">
+        <div class="card referee-assignment-card">
             <div class="card-body">
                 <h5 class="card-title">Game {{id}}</h5>
                 <h5 class="card-text">{{schoolName}}</h5>
