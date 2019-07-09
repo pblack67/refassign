@@ -1,63 +1,5 @@
-<style>
-  .container1 {
-    width: 100%;
-  }
-
-  .leftDiv {
-    text-align: unset;
-    font-size: 150%;
-    color: white;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
-    transform: translateX(-100rem);
-    animation: slideIn .5s forwards;
-    width: 40%;
-    height: 500px;
-    margin: 20px 20px 20px 80px;
-    float: left;
-  }
-
-  .leftDiv ol {
-    margin: 20px;
-  }
-
-  .rightDiv {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
-    transform: translateX(100rem);
-    animation: slideIn .5s forwards;
-    width: 40%;
-    height: 500px;
-    margin: 20px 80px 20px 20px;
-    float: right
-  }
-
-  h2 {
-    color: white;
-    text-align: center;
-    border-bottom: 2px solid red;
-    padding: 20px 0;
-  }
-
-  label {
-    color: white;
-    text-align: center;
-    font-size: 13px;
-  }
-
-  #create {
-    color: white;
-    font-size: 15px;
-  }
-
-  #create:hover {
-    color: white;
-    font-size: 20px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
-
-  }
-</style>
-
-<div class="container1">
-  <div class="leftDiv">
+<div class="container-100">
+  <div class="referee-list">
     <h2>Games</h2>
     <hr>
     <div class="row">
@@ -83,7 +25,7 @@
       </div>
     </div>
   </div>
-  <div class="rightDiv">
+  <div class="referee-create">
     <h2>Registration</h2>
     <hr>
     <h3>Please register new game!</h3>
@@ -141,7 +83,7 @@
       <div class="form-group">
         <hr>
         <div class="text-center">
-          <button type="button" id="create" class="btn btn-outline-danger btn-block">Create</button>
+          <button type="button" id="referee-create" class="btn btn-outline-danger btn-block">Create</button>
         </div>
       </div>
     </div>

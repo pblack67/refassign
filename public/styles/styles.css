@@ -225,6 +225,10 @@ nav ul li a:hover::after {
   float: left;
 }
 
+.referee-list ol {
+  margin: 20px;
+}
+
 .referee-create {
   background: linear-gradient(
       to bottom,
