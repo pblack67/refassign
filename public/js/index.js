@@ -1,7 +1,7 @@
 $(function() {
-  $("#sign-in").on("click", function() {
-    let email = $("#email").val();
-    let role = $("#element2").val();
+  $("#sign-in-button").on("click", function() {
+    let email = $("#login-email").val();
+    let role = $("#login-role").val();
     let formObject = {
       email,
       role
