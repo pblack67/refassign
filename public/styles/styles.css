@@ -1,46 +1,18 @@
-body {
-  background-image: url("../img/referee.jpg");
-  background-size: cover;
-  position: relative;
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-h1 {
-  font-size: 50px;
-  line-height: 1.2;
-  font-size: 3rem;
-  font-weight: 300;
-  transform: translateX(-100rem);
-  animation: slideIn 0.5s forwards;
-  color: white;
-  margin-left: 50px;
-}
-
-p {
-  font-size: 20px;
-  line-height: 1.2;
-  font-size: 2rem;
-  font-weight: 300;
-  transform: translateX(-100rem);
-  animation: slideIn 0.5s forwards;
-  color: white;
-  margin-left: 50px;
-  margin-top: 20px;
+body {
+  background-image: url("../img/referee.jpg");
+  background-size: cover;
+  position: relative;
 }
 
 html {
   font-size: 10px;
   font-family: "Roboto Cn", sans-serif;
-}
-
-a {
-  text-decoration: none;
-  color: #eee;
 }
 
 header {
@@ -57,23 +29,6 @@ header {
   overflow: hidden;
 }
 
-.container {
-  max-width: 120rem;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.menu-toggle {
-  position: fixed;
-  top: 2.5rem;
-  right: 2.5rem;
-  color: #eeeeee;
-  font-size: 3rem;
-  cursor: pointer;
-  z-index: 1000;
-  display: none;
-}
-
 nav {
   padding-top: 5rem;
   display: flex;
@@ -81,18 +36,6 @@ nav {
   align-items: center;
   text-transform: uppercase;
   font-size: 1.6rem;
-}
-
-.brand {
-  margin-left: -3pc;
-  font-size: 3rem;
-  font-weight: 300;
-  transform: translateX(-100rem);
-  animation: slideIn 0.5s forwards;
-}
-
-.brand span {
-  color: crimson;
 }
 
 nav ul {
@@ -166,6 +109,155 @@ nav ul li a::after {
   transform-origin: right;
 }
 
+nav ul li a:hover::before,
+nav ul li a:hover::after {
+  transform: scaleX(1);
+}
+
+h1 {
+  font-size: 50px;
+  line-height: 1.2;
+  font-size: 3rem;
+  font-weight: 300;
+  transform: translateX(-100rem);
+  animation: slideIn 0.5s forwards;
+  color: white;
+  margin-left: 50px;
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  border-bottom: 2px solid red;
+  padding: 20px 0;
+}
+
+h3 {
+  color: white;
+  text-align: center;
+  margin-top: -20px;
+}
+
+h4 {
+  color: white;
+  margin-top: 20px;
+  font-size: 20px;
+  border-bottom: 2px solid red;
+}
+
+footer {
+  clear: both;
+  padding: 20px;
+  margin-top: 20px;
+  color: #ffffff;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8),
+      rgba(65, 65, 64, 0.5)
+    ),
+    center no-repeat;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+label {
+  color: white;
+  text-align: center;
+  font-size: 13px;
+}
+
+p {
+  font-size: 20px;
+  line-height: 1.2;
+  font-size: 2rem;
+  font-weight: 300;
+  transform: translateX(-100rem);
+  animation: slideIn 0.5s forwards;
+  color: white;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #eee;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.brand {
+  margin-left: -3pc;
+  font-size: 3rem;
+  font-weight: 300;
+  transform: translateX(-100rem);
+  animation: slideIn 0.5s forwards;
+}
+
+.brand span {
+  color: crimson;
+}
+
+.container {
+  max-width: 120rem;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.container-100 {
+  width: 100%;
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.info-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.info-boxes div {
+  font-size: 2rem;
+  border: 3px #fff solid;
+  padding: 1.5rem 2.5rem;
+  margin-bottom: 3rem;
+  transition: all 0.5s ease-out;
+  color: white;
+}
+
+.info-boxes div:hover {
+  padding: 0.5rem 1.5rem;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8),
+      rgba(65, 65, 64, 0.5)
+    ),
+    center no-repeat;
+  color: white;
+}
+
+.menu-toggle {
+  position: fixed;
+  top: 2.5rem;
+  right: 2.5rem;
+  color: #eeeeee;
+  font-size: 3rem;
+  cursor: pointer;
+  z-index: 1000;
+  display: none;
+}
+
 .overlay {
   background-color: rgba(0, 0, 0, 0.95);
   position: fixed;
@@ -179,98 +271,9 @@ nav ul li a::after {
   display: none;
 }
 
-nav ul li a:hover::before,
-nav ul li a:hover::after {
-  transform: scaleX(1);
-}
-
-#showcase {
-  min-height: 10px;
-  background: url("../img/showcase.jpg") no-repeat 0 -400px;
-  text-align: center;
-  color: #ffffff;
-}
-
-#showcase h1 {
-  margin-top: 100px;
-  font-size: 55px;
-  margin-bottom: 10px;
+.red-border {
   color: red;
-}
-
-#showcase p {
-  font-size: 20px;
-  color: blue;
-}
-
-.container-100 {
-  width: 100%;
-}
-
-.referee-list {
-  text-align: unset;
-  font-size: 150%;
-  color: white;
-  background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.8),
-      rgba(65, 65, 64, 0.5)
-    ),
-    center no-repeat;
-  transform: translateX(-100rem);
-  animation: slideIn 0.5s forwards;
-  width: 40%;
-  height: 600px;
-  margin: 20px 20px 20px 80px;
-  float: left;
-}
-
-.referee-list ol {
-  margin: 20px;
-}
-
-.referee-create {
-  background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.8),
-      rgba(65, 65, 64, 0.5)
-    ),
-    center no-repeat;
-  transform: translateX(100rem);
-  animation: slideIn 0.5s forwards;
-  width: 40%;
-  height: 600px;
-  margin: 20px 80px 20px 20px;
-  float: right;
-}
-
-h2 {
-  color: white;
-  text-align: center;
-  border-bottom: 2px solid red;
-  padding: 20px 0;
-}
-
-label {
-  color: white;
-  text-align: center;
-  font-size: 13px;
-}
-
-#referee-create {
-  color: white;
-  font-size: 15px;
-}
-
-#referee-create:hover {
-  color: white;
-  font-size: 20px;
-  background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.8),
-      rgba(65, 65, 64, 0.5)
-    ),
-    center no-repeat;
+  border: 1px solid;
 }
 
 .referee-assignment-card {
@@ -304,6 +307,43 @@ label {
   color: white;
 }
 
+.referee-create {
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8),
+      rgba(65, 65, 64, 0.5)
+    ),
+    center no-repeat;
+  transform: translateX(100rem);
+  animation: slideIn 0.5s forwards;
+  width: 40%;
+  height: 600px;
+  margin: 20px 80px 20px 20px;
+  float: right;
+}
+
+.referee-list {
+  text-align: unset;
+  font-size: 150%;
+  color: white;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8),
+      rgba(65, 65, 64, 0.5)
+    ),
+    center no-repeat;
+  transform: translateX(-100rem);
+  animation: slideIn 0.5s forwards;
+  width: 40%;
+  height: 600px;
+  margin: 20px 20px 20px 80px;
+  float: left;
+}
+
+.referee-list ol {
+  margin: 20px;
+}
+
 .row-body {
   display: flex;
   flex-wrap: wrap;
@@ -327,6 +367,103 @@ label {
     ),
     center no-repeat;
   color: white;
+}
+
+.sign-in-container {
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+@keyframes slideIn {
+  from {
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+#info-box {
+  transform: translateY(-100rem);
+  animation: slideIn 0.7s forwards;
+}
+
+#login-container {
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8),
+      rgba(65, 65, 64, 0.5)
+    ),
+    center no-repeat;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: 450px;
+  max-width: 100%;
+  min-height: 480px;
+  transform: translateY(100rem);
+  animation: slideIn 0.7s forwards;
+}
+
+#login-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8),
+      rgba(65, 65, 64, 0.5)
+    ),
+    center no-repeat;
+}
+
+#login-email {
+  background-color: white;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+}
+
+#referee-create {
+  color: white;
+  font-size: 15px;
+}
+
+#referee-create:hover {
+  color: white;
+  font-size: 20px;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8),
+      rgba(65, 65, 64, 0.5)
+    ),
+    center no-repeat;
+}
+
+#showcase {
+  min-height: 10px;
+  background: url("../img/showcase.jpg") no-repeat 0 -400px;
+  text-align: center;
+  color: #ffffff;
+}
+
+#showcase h1 {
+  margin-top: 100px;
+  font-size: 55px;
+  margin-bottom: 10px;
+  color: red;
+}
+
+#showcase p {
+  font-size: 20px;
+  color: blue;
 }
 
 #sign-in-button {
@@ -358,176 +495,4 @@ label {
 #sign-in-button.ghost {
   background-color: transparent;
   border-color: #ffffff;
-}
-
-#login-container {
-  background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.8),
-      rgba(65, 65, 64, 0.5)
-    ),
-    center no-repeat;
-  border-radius: 10px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  position: relative;
-  overflow: hidden;
-  width: 450px;
-  max-width: 100%;
-  min-height: 480px;
-  transform: translateY(100rem);
-  animation: slideIn 0.7s forwards;
-}
-
-.align-center {
-  text-align: center;
-}
-
-#info-box {
-  transform: translateY(-100rem);
-  animation: slideIn 0.7s forwards;
-}
-
-.red-border {
-  color: red;
-  border: 1px solid;
-}
-
-.info-boxes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 1rem;
-}
-
-.info-boxes div {
-  font-size: 2rem;
-  border: 3px #fff solid;
-  padding: 1.5rem 2.5rem;
-  margin-bottom: 3rem;
-  transition: all 0.5s ease-out;
-  color: white;
-}
-
-.info-boxes div:hover {
-  padding: 0.5rem 1.5rem;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(65, 65, 64, 0.5)), center no-repeat;
-  color: white;
-}
-
-@keyframes slideIn {
-  from {
-  }
-
-  to {
-    transform: translateX(0);
-  }
-}
-
-#login-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 50px;
-  height: 100%;
-  text-align: center;
-  background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.8),
-      rgba(65, 65, 64, 0.5)
-    ),
-    center no-repeat;
-}
-
-#login-email {
-  background-color: white;
-  border: none;
-  padding: 12px 15px;
-  margin: 8px 0;
-  width: 100%;
-}
-
-.form-container {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  transition: all 0.6s ease-in-out;
-}
-
-.sign-in-container {
-  left: 0;
-  width: 100%;
-  z-index: 2;
-}
-
-@media screen and (max-width: 700px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  nav {
-    padding-top: 0;
-    display: none;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-  }
-
-  nav ul {
-    flex-direction: column;
-  }
-
-  nav ul li {
-    margin-top: 5rem;
-  }
-
-  nav ul li a {
-    margin: 0;
-    font-size: 2.5rem;
-  }
-
-  .brand {
-    font-size: 5rem;
-  }
-
-  .overlay.menu-open,
-  nav.menu-open {
-    display: flex;
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-h3 {
-  color: white;
-  text-align: center;
-  margin-top: -20px;
-}
-
-h4 {
-  color: white;
-  margin-top: 20px;
-  font-size: 20px;
-  border-bottom: 2px solid red;
-}
-
-footer {
-  clear: both;
-  padding: 20px;
-  margin-top: 20px;
-  color: #ffffff;
-  background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.8),
-      rgba(65, 65, 64, 0.5)
-    ),
-    center no-repeat;
-  text-align: center;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
 }
